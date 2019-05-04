@@ -1,5 +1,14 @@
 <div>
-  <input type="text" placeholder="login">
-  <input type="password" placeholder="hasło">
-  <button type="submit" (click)="authorizeUser()">Zaloguj</button>
+  <h1>Komponent z logowaniem</h1>
+  <form [formGroup]="loginForm" (ngSubmit)="authorizeUser(loginForm)">
+      <label>Login: </label>
+      <input type="text" placeholder="login" formControlName="login">
+      <span *ngIf="formErrors.login">{{ formErrors.login + 'sads'}}</span>
+
+      <label>Hasło:</label>
+      <input type="password" placeholder="hasło" formControlName="password">
+      <span *ngIf="formErrors.password">{{ formErrors.password }}</span>
+      <button type="submit" [disabled]="loginForm.invalid">Zaloguj się</button>
+      <button type="button" (click)="createNewUser()">Zarejestruj się</button>
+  </form>
 </div>

@@ -9,6 +9,8 @@ import { RecommendedDietComponent } from './components/recommended-diet/recommen
 import { ProductsListComponent } from './components/products-list/products-list.component';
 import { CalculatorBmiComponent } from './components/calculator-bmi/calculator-bmi.component';
 import { UserMealsComponent } from './components/user-meals/user-meals.component';
+import { RegisterUserComponent } from './components/register-user/register-user.component';
+import { UserDetailsComponent } from './components/user-details/user-details.component';
 
 // Services
 import { AuthorizeUserService } from './services/autorize-user.service';
@@ -17,6 +19,14 @@ const routes: Routes = [
     {
       path: 'login',
       component: LoginComponent,
+    },
+    {
+       path: 'stworz-uzytkownika',
+       component: RegisterUserComponent,
+    },
+    {
+       path: 'ustawienia-konta',
+       component: UserDetailsComponent,
     },
     {
        path: 'main',

@@ -1,5 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { ReactiveFormsModule, FormsModule} from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -11,6 +13,8 @@ import { ProductsListComponent } from './components/products-list/products-list.
 import { DropdownNavigatorComponent } from './components/dropdown-navigator/dropdown-navigator.component';
 import { CalculatorBmiComponent } from './components/calculator-bmi/calculator-bmi.component';
 import { UserMealsComponent } from './components/user-meals/user-meals.component';
+import { RegisterUserComponent } from './components/register-user/register-user.component';
+import { UserDetailsComponent } from './components/user-details/user-details.component';
 
 import { AuthorizeUserService } from './services/autorize-user.service';
 
@@ -24,11 +28,16 @@ import { AuthorizeUserService } from './services/autorize-user.service';
     ProductsListComponent,
     DropdownNavigatorComponent,
     CalculatorBmiComponent,
-    UserMealsComponent
+    UserMealsComponent,
+    RegisterUserComponent,
+    UserDetailsComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule,
+    ReactiveFormsModule,
+    FormsModule
   ],
   providers: [
       AuthorizeUserService
