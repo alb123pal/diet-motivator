@@ -3,10 +3,6 @@ export const ValidationErrorMessages = {
         required: 'Login jest wymmagany',
         minlength: 'Minimalna długość loginu to 3 znaki'
     },
-    password: {
-        required: 'Hasło jest wymagane',
-        minlength: 'Minimalna długość hasła to 5 znaków'
-    },
     name: {
         required: 'Imię jest wymagane',
     },
@@ -15,8 +11,10 @@ export const ValidationErrorMessages = {
     },
     email: {
         required: 'Email jest wymagany',
+        minlength: 'Email musi składać się conajmniej  5 znaków',
+        email: 'Wprowadzony email jest nieprawidłowy'
     },
-    groupPassword: {
+    passwordGroup: {
         matchingConfirmedPassword: 'Hasła różnią się między sobą'
     }
 };

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router} from '@angular/router';
 import { FormBuilder, FormGroup, Validators} from '@angular/forms';
+import { CustomValidators } from '../../form/custom-validators';
 import { ValidationErrorMessages } from '../../form/validation-messages';
 import { debounceTime } from 'rxjs/operators';
 import { HttpClient } from '@angular/common/http';
@@ -15,7 +16,6 @@ export class LoginComponent implements OnInit {
   loginForm: FormGroup;
   formErrors = {
     login: '',
-    password: ''
   };
 
   constructor(private _router: Router, private _fb: FormBuilder, private _http: HttpClient) { }
@@ -23,7 +23,7 @@ export class LoginComponent implements OnInit {
   ngOnInit() {
     this.loginForm = this._fb.group({
         login: ['', [Validators.required, Validators.minLength(3)] ],
-        password: ['', [Validators.required, Validators.minLength(5)]]
+        password: ['', [CustomValidators.passwordStrength]]
     });
 
     this.loginForm.valueChanges.pipe(

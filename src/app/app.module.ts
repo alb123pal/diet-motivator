@@ -17,6 +17,7 @@ import { RegisterUserComponent } from './components/register-user/register-user.
 import { UserDetailsComponent } from './components/user-details/user-details.component';
 
 import { AuthorizeUserService } from './services/autorize-user.service';
+import { CustomValidators } from './form/custom-validators';
 
 @NgModule({
   declarations: [
@@ -40,7 +41,8 @@ import { AuthorizeUserService } from './services/autorize-user.service';
     FormsModule
   ],
   providers: [
-      AuthorizeUserService
+      AuthorizeUserService,
+      CustomValidators
   ],
   bootstrap: [AppComponent]
 })

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Router} from '@angular/router';
 import { FormBuilder, FormGroup, Validators} from '@angular/forms';
+import { CustomValidators } from '../../form/custom-validators';
 import { ValidationErrorMessages } from '../../form/validation-messages';
 import { debounceTime } from 'rxjs/operators';
 
@@ -17,25 +18,23 @@ export class RegisterUserComponent implements OnInit {
     surname: '',
     email: '',
     login: '',
-    confirmedPassword: '',
+    passwordGroup: ''
   };
 
   constructor(private _router: Router, private _fb: FormBuilder, private _http: HttpClient) { }
 
   ngOnInit() {
     this.createUserForm = this._fb.group({
-      name: ['', [Validators.required, Validators.minLength(3)] ],
-      surname: ['', [Validators.required, Validators.minLength(5)]],
-      email: ['', [Validators.required]],
-      login: ['', [Validators.required]],
+      name: ['', [Validators.required]],
+      surname: ['', [Validators.required]],
+      email: ['', [Validators.required, Validators.minLength(5), Validators.email]],
+      login: ['', [Validators.required, Validators.minLength(3)]],
       passwordGroup: 
         this._fb.group({
-          password: ['', [Validators.required, Validators.minLength(3)]],
-          confirmedPassword: ['', [Validators.required, Validators.minLength(3)]]
-        }, { validators: Validators.required} )
+          password: ['', [CustomValidators.passwordStrength]],
+          confirmedPassword: ['', [Validators.required, Validators.minLength(5)]]
+        }, { validators: CustomValidators.passwordMatch } )
     });
-
-    console.log(this.createUserForm);
 
     this.createUserForm.valueChanges.pipe(
       debounceTime(500)
@@ -56,5 +55,9 @@ export class RegisterUserComponent implements OnInit {
         }
       }
     }
+  }
+
+  createNewUser() {
+    //TODO: request to firebase and login user to app
   }
 }

@@ -28,13 +28,16 @@
       <div formGroupName="passwordGroup">
           <label>Hasło:</label>
           <input type="password" placeholder="Hasło" formControlName="password">
-          <span *ngIf="formErrors.password">{{ formErrors.password }}</span>
+          <span *ngIf="createUserForm.controls.passwordGroup.controls.password?.hasError('passwordStrength')">
+            {{createUserForm.controls.passwordGroup.controls.password.errors.passwordStrength}}
+          </span>
     
           <label>Powtórz hasło:</label>
           <input type="password" placeholder="Powtórz hasło" formControlName="confirmedPassword">
-          <span *ngIf="formErrors.confirmedPassword">{{ formErrors.confirmedPassword }}</span>
+          <span *ngIf="createUserForm.confirmedPassword">{{ formErrors.confirmedPassword }}</span>
+          <span *ngIf="formErrors.passwordGroup">{{ formErrors.passwordGroup }}</span>
       </div>
 
-      <button type="button" (click)="createNewUser()">Zarejestruj się</button>
+      <button type="button" (click)="createNewUser()" [disabled]="createUserForm.invalid">Zarejestruj się</button>
   </form>
 </div>
