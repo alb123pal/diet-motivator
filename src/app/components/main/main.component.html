@@ -7,11 +7,35 @@
 <br /> i jak wprowadzi ten niezdrowy posilek to wyswietlamy albo te memy, albo jak sie uda to zablokowac telefon czy cos w tym stylu
 <br/>- aktualna dieta uzytkownika( jesli nie ma to jakis przycisk ułóż diete),
 <br/>- zapotrzebowanie kaloryczne na dzien(ile juz zjadl kcal i ile mu zostało),
-<br/>- wysuwajaca sie nawigacja z takimi własciwosciami(w kazdym roucie powinna byc):
-<br/>    a) ułóż swoją diete,
-<br/>    b) wybierz rekomendowana diete dla siebie
-<br/>    c) sprawdz kaloryczność produktów
-<br/>    d) fit posiłki
-<br/>    e) oblicz BMI
+<br/> 
+<br/>   
+<div>
+    <div class="row">
+        <span>Waga: {{user.weight}} kg</span> <br /> 
+        <span>Wzrost: {{user.height}} cm</span>
+        <span>Jak nie ma wprowadzonych danych to napis: Podaj wage i wzrost</span>
+    </div>
+    <div class="row">
+        <span>Aktualnie wybrany plan dietetyczny:
+            <span class="bold">{{user.currentDiet}}</span>
+        </span>
+        <br /><span>Cel: {{user.purpose}} kg </span>
+        <span>Jeśli nie ma diety to przycisk:</span>
+        <button [routerLink]="['/stworz-diete']">Ułóż diete</button>
+    </div>
+    <div class="row">
+        <span>Punkty na niezdrowe jedzenie: 5 </span>
+        <span>Dzienny bilans kaloryczny: {{user.totalDayKcal}} </span>
+        <span>Posiłki: {{user.ateKcal}} </span>
+        <span>Pozostało: {{user.remainKcal}} </span>
+        <span>Aktywność fizyczna: -{{user.exercise}} </span>
+    </div>
+    <div class="row">
+       <br /> <span>Dziennik wprowadzonych posiłków</span>
+       <br /> <span>Posiłek 1: {{user.meal1}}</span>
+       <br /> <span>Posiłek 2: {{user.meal2}}</span>
+       <br /> <span>Posiłek 3: {{user.meal3}}</span>
+    </div>
+</div>
 <hr />
 
