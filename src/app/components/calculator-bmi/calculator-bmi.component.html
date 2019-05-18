@@ -1,3 +1,29 @@
 <h1>Kalkulator BMI</h1>
 <br/> Wylicza BMI
 <br />Aktualizacja zapotrzebowania kalorycznego
+<div>
+    <div>
+        <span>Waga</span>
+        <input type="number" #weight placeholder="Podaj swoją wagę (kg) np. 80"/>
+    </div>
+    <div>
+        <span>Wzrost</span>
+        <input type="number" #height placeholder="Podaj wzrost (m) np. 1.80"/>
+    </div>
+    <div>
+        <span>Wiek</span>
+        <input type="number" #age placeholder="Podaj wiek"/>
+    </div>
+    <div>
+        <span>Płeć</span>
+        <span>Mężczyzna:</span><input [(ngModel)]="gender" type="radio" name="gender" value="M">
+        <span>Kobieta:</span><input [(ngModel)]="gender" type="radio" name="gender" value="K">
+    </div>
+</div>
+<button (click)="setBMI()">Wylicz BMI</button>
+<div>
+    <span>Twój wskaźnik BMI wynosi: {{BMI}} </span><br />
+    <span>Znaczenie BMI: {{indicatorBMI}}</span><br/>
+    <span>Twoje podstawowe zapotrzebowanie kaloryczne wynosi: {{kcalDemand}}</span>
+</div>
+<button>Zapisz swoje dane</button>
