@@ -1,3 +1,29 @@
-<h1>Lista produktów</h1>
-<br /> input wyszukujacy produkty po wpisanym slowie
-<br />Lista produktów z wartoscia energetycznymi i makrokaloriami
+<div >
+    <p>Szukaj produktów </p>
+    <input class="input" placeholder="Szukaj produktu"  name="filter" (input)="searchProduct($event)"/>
+</div>
+<div>
+    <h1>Lista produktów</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Nazwa produktu</th>
+                <th>Wartość energetyczna</th>
+                <th>Białko</th>
+                <th>Węglowodany</th>
+                <th>Tłuszcz</th>
+            </tr>
+        </thead>
+        <tbody>
+            <div *ngFor="let product of allProducts | productFilter: productFilter">
+                <tr>
+                    <th>{{product.name}}</th>
+                    <th>{{product.kcal}}</th>
+                    <th>{{product.protein}}</th>
+                    <th>{{product.carbo}}</th>
+                    <th>{{product.fat}}</th>
+                </tr>
+            </div>
+        </tbody>
+    </table>
+</div>

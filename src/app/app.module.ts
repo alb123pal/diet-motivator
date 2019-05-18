@@ -18,6 +18,7 @@ import { UserDetailsComponent } from './components/user-details/user-details.com
 
 import { AuthorizeUserService } from './services/autorize-user.service';
 import { CustomValidators } from './form/custom-validators';
+import { ProductFilterPipe } from './components/products-list/product-filter.pipe';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { CustomValidators } from './form/custom-validators';
     CalculatorBmiComponent,
     UserMealsComponent,
     RegisterUserComponent,
-    UserDetailsComponent
+    UserDetailsComponent,
+    ProductFilterPipe
   ],
   imports: [
     BrowserModule,
