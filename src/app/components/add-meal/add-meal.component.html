@@ -1,0 +1,28 @@
+<div>
+  <h1>Dodaj posilek</h1>
+  <div>
+      <span>Nazwa posiłku</span>
+      <input [(ngModel)]="newMeal.name" type="text" placeholder="Nazwa posiłku"/>
+  </div>
+  <div>
+      <span>Kcal</span>
+      <input [(ngModel)]="newMeal.kcal" type="text" placeholder="Kcal"/>
+  </div>
+  <div>
+      <span>białko</span>
+      <input [(ngModel)]="newMeal.protein" type="text" placeholder="białko"/>
+  </div>
+  <div>
+      <span>wegglowodany</span>
+      <input [(ngModel)]="newMeal.carbo" type="text"placeholder="Podaj weglowodany"/>
+  </div>
+  <div>
+      <span>tluszcz</span>
+      <input [(ngModel)]="newMeal.fat" type="text" placeholder="Podaj tluszcz"/>
+  </div>
+  <div>
+      <span>przepis</span>
+      <input [(ngModel)]="newMeal.receipt" type="text" placeholder="Podaj przepis"/>
+  </div>
+  <button (click)="saveMeal()">Dodaj posiłek</button>
+</div>

@@ -1,4 +1,16 @@
-<h1>Posiłki uzytkowników</h1>
-<br/> Przcisk dodaj swoj posiłek
-<br /> Wyswietlanie z bazy jakis tam fit posilkow
-<br/> Klikniecie w posiłek pokazuje jak przgotowac i wartosci energetyczne
+<div>
+    <h1>Posiłki uzytkowników</h1>
+    <div class="container">
+        <div clas="" *ngFor="let userMeal of userMeals">
+            <div class="row">
+                <span>{{userMeal.name}}</span>
+                <span>{{userMeal.kcal}}</span>
+                <img src="https://s3.przepisy.pl/przepisy3ii/img/variants/290x0/indyk-z-brokulami-zapiekany-w-sosie-serowym.jpg"/>
+                
+            </div>
+        </div>
+    </div>
+    <button (click)="addMeal()">Dodaj posiłek</button>
+    <br/> Przcisk dodaj swoj posiłek
+    <br/> Klikniecie w posiłek pokazuje jak przgotowac i wartosci energetyczne
+</div>

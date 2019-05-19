@@ -12,6 +12,7 @@ import { UserMealsComponent } from './components/user-meals/user-meals.component
 import { RegisterUserComponent } from './components/register-user/register-user.component';
 import { UserDetailsComponent } from './components/user-details/user-details.component';
 import { DetailsDietComponent } from './components/details-diet/details-diet.component';
+import { AddMealComponent } from './components/add-meal/add-meal.component';
 
 // Services
 import { AuthorizeUserService } from './services/autorize-user.service';
@@ -57,6 +58,11 @@ const routes: Routes = [
     {
         path: 'posilki',
         component: UserMealsComponent,
+        canActivate: [AuthorizeUserService]
+    },
+    {
+        path: 'dodaj-posilek',
+        component: AddMealComponent,
         canActivate: [AuthorizeUserService]
     },
     {

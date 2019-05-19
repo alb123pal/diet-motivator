@@ -20,6 +20,7 @@ import { DetailsDietComponent } from './components/details-diet/details-diet.com
 import { AuthorizeUserService } from './services/autorize-user.service';
 import { CustomValidators } from './form/custom-validators';
 import { ProductFilterPipe } from './components/products-list/product-filter.pipe';
+import { AddMealComponent } from './components/add-meal/add-meal.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +36,8 @@ import { ProductFilterPipe } from './components/products-list/product-filter.pip
     RegisterUserComponent,
     UserDetailsComponent,
     ProductFilterPipe,
-    DetailsDietComponent
+    DetailsDietComponent,
+    AddMealComponent
   ],
   imports: [
     BrowserModule,
