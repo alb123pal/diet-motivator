@@ -11,6 +11,7 @@ import { CalculatorBmiComponent } from './components/calculator-bmi/calculator-b
 import { UserMealsComponent } from './components/user-meals/user-meals.component';
 import { RegisterUserComponent } from './components/register-user/register-user.component';
 import { UserDetailsComponent } from './components/user-details/user-details.component';
+import { DetailsDietComponent } from './components/details-diet/details-diet.component';
 
 // Services
 import { AuthorizeUserService } from './services/autorize-user.service';
@@ -41,6 +42,11 @@ const routes: Routes = [
     {
         path: 'rekomendowane-diety',
         component: RecommendedDietComponent,
+        canActivate: [AuthorizeUserService]
+    },
+    {
+        path: 'szczegoly-diety/:diet',
+        component: DetailsDietComponent,
         canActivate: [AuthorizeUserService]
     },
     {

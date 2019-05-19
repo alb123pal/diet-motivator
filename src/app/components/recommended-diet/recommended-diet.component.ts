@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router} from '@angular/router';
 
 @Component({
   selector: 'app-recommended-diet',
@@ -7,9 +8,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RecommendedDietComponent implements OnInit {
 
-  constructor() { }
+  rangeDietKcal = [
+    '700-1000',
+    '1000-1500',
+    '1500-2000',
+    '2000-2500',
+    '2500-3000',
+    '<3000',
+  ]
+  constructor(private _router: Router) { }
 
   ngOnInit() {
+  }
+
+  showDetailsDiet(diet: string) {
+    this._router.navigate(['szczegoly-diety', diet]);
   }
 
 }

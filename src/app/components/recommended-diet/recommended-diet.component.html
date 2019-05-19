@@ -1,5 +1,11 @@
 <h1>
   Rekomendowanie diety
 </h1>
+<div>
+  <div *ngFor="let diet of rangeDietKcal">
+    <div (click)="showDetailsDiet(diet)">Przedział kalori {{diet}}</div>
+
+  </div>
+</div>
 <br/> Wyswietlanie tam z 7 diet
 <br /> Klikniecie w jedna pokazuje szczegóły danej diety

@@ -15,6 +15,7 @@ import { CalculatorBmiComponent } from './components/calculator-bmi/calculator-b
 import { UserMealsComponent } from './components/user-meals/user-meals.component';
 import { RegisterUserComponent } from './components/register-user/register-user.component';
 import { UserDetailsComponent } from './components/user-details/user-details.component';
+import { DetailsDietComponent } from './components/details-diet/details-diet.component';
 
 import { AuthorizeUserService } from './services/autorize-user.service';
 import { CustomValidators } from './form/custom-validators';
@@ -33,7 +34,8 @@ import { ProductFilterPipe } from './components/products-list/product-filter.pip
     UserMealsComponent,
     RegisterUserComponent,
     UserDetailsComponent,
-    ProductFilterPipe
+    ProductFilterPipe,
+    DetailsDietComponent
   ],
   imports: [
     BrowserModule,
