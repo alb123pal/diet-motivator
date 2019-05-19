@@ -1,0 +1,11 @@
+<div>
+  <h1>Szczegóły diety</h1>
+  <div *ngFor="let meal of meals; let i = index">
+    <h1>{{i+1}} posiłek</h1>
+    <span>Nazwa: {{meal.name}}</span>
+    <span>Kcal: {{meal.kcal}}</span>
+    <span>Białko: {{meal.proteins}}</span>
+    <span>Weglowodany: {{meal.carbo}}</span>
+    <span>Tłuszcze: {{meal.fat}}</span>
+  </div>
+</div>
