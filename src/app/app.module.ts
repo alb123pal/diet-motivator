@@ -22,6 +22,10 @@ import { CustomValidators } from './form/custom-validators';
 import { ProductFilterPipe } from './components/products-list/product-filter.pipe';
 import { AddMealComponent } from './components/add-meal/add-meal.component';
 
+import { AngularFireModule } from '@angular/fire';
+import { AngularFireAuthModule } from '@angular/fire/auth';
+import { environment } from '../environments/environment';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -37,17 +41,22 @@ import { AddMealComponent } from './components/add-meal/add-meal.component';
     UserDetailsComponent,
     ProductFilterPipe,
     DetailsDietComponent,
-    AddMealComponent
+    AddMealComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+    AngularFireModule.initializeApp(
+      environment.firebase
+    ),
+    AngularFireAuthModule
   ],
   providers: [
       AuthorizeUserService,
+      AngularFireAuthModule,
       CustomValidators
   ],
   bootstrap: [AppComponent]
