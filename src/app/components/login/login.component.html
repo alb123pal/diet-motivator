@@ -1,4 +1,4 @@
-<div>
+<!-- <div>
   <h1>Komponent z logowaniem</h1>
   <form [formGroup]="loginForm" (ngSubmit)="authorizeUser(loginForm)">
       <label>Login: </label>
@@ -11,4 +11,36 @@
       <button type="submit" [disabled]="loginForm.invalid">Zaloguj się</button>
       <button type="button" (click)="createNewUser()">Zarejestruj się</button>
   </form>
+</div> -->
+<div *ngIf="userService.uid | async as uid; else login">
+  <h3>You are now logged in as {{ uid }}</h3>
+  <button (click)="userService.logout()">Logout</button>
 </div>
+<ng-template #login>
+  <div>
+    <h3>Zaloguj się na swoje konto</h3>
+    <label for="email">Podaj adres email</label>
+    <input type="text" name="email" id="email" [(ngModel)]="userService.userEmail"><br>
+    <label for="password">Podaj hasło</label>
+    <input type="password" name="password" id="password" [(ngModel)]="userService.userPassword"><br>
+    <div>
+        <button (click)="userService.loginWithEmail()">Zaloguj</button>
+    </div>
+    <div class="socials">
+        <button (click)="userService.loginWithGoogle()">Zaloguj z Google</button>
+        <button>Zaloguj z Facebook</button>
+        <button>Zaloguj z Tweeter</button>
+    </div>
+  </div>
+  <hr>
+  <div>
+    <h3>Stwórz nowe konto</h3>
+    <label for="new-email">Podaj adres email</label>
+    <input type="text" name="new-email" id="new-email" [(ngModel)]="userService.newUserEmail"><br>
+    <label for="new-password">Podaj hasło</label>
+    <input type="password" name="new-password" id="new-password" [(ngModel)]="userService.newUserPassword"><br>
+    <div>
+        <button (click)="userService.createAccount()">Zarejestruj</button>
+    </div>
+  </div>
+</ng-template>
