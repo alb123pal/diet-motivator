@@ -27,9 +27,9 @@
         <button (click)="userService.loginWithEmail()">Zaloguj</button>
     </div>
     <div class="socials">
+      <h3>Zaloguj przez socjale</h3>
         <button (click)="userService.loginWithGoogle()">Zaloguj z Google</button>
-        <button>Zaloguj z Facebook</button>
-        <button>Zaloguj z Tweeter</button>
+        <button (click)="userService.loginWithFacebook()">Zaloguj z Facebook</button>
     </div>
   </div>
   <hr>

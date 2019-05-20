@@ -56,9 +56,17 @@ export class AuthorizeUserService /*implements CanActivate*/ {
         this.afAuth.auth.signInWithPopup(new auth.GoogleAuthProvider());
     }
 
+    loginWithFacebook() {
+        this.afAuth.auth.signInWithPopup(new auth.FacebookAuthProvider());
+    }
+
     logout() {
         this.afAuth.auth.signOut();
     }
+
+
+
+    // https://dietmotivator-45021.firebaseapp.com/__/auth/handler
 
     // canActivate() {
     //     // TODO: getting authorized user from firebase
