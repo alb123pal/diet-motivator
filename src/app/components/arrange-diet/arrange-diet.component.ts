@@ -6,10 +6,28 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./arrange-diet.component.scss']
 })
 export class ArrangeDietComponent implements OnInit {
+  addingMeal = {
+  };
+  userMeals = [];
+  isAddingMeal = false;
 
   constructor() { }
 
   ngOnInit() {
   }
 
+  addMeal() {
+    this.isAddingMeal = !this.isAddingMeal;
+  }
+
+  saveMeal() {
+    this.userMeals.push(this.addingMeal);
+    this.isAddingMeal = false;
+    this.addingMeal = {};
+    console.log(this.userMeals);
+  }
+
+  saveAllMeals() {
+    console.log('Zapisujemy dane do firebase');
+  }
 }

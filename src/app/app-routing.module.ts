@@ -33,42 +33,34 @@ const routes: Routes = [
     {
        path: 'main',
        component: MainComponent,
-       canActivate: [AuthorizeUserService]
     },
     {
         path: 'stworz-diete',
         component: ArrangeDietComponent,
-        canActivate: [AuthorizeUserService]
     },
     {
         path: 'rekomendowane-diety',
         component: RecommendedDietComponent,
-        canActivate: [AuthorizeUserService]
     },
     {
         path: 'szczegoly-diety/:diet',
         component: DetailsDietComponent,
-        canActivate: [AuthorizeUserService]
     },
     {
         path: 'lista-produktow',
         component: ProductsListComponent,
-        canActivate: [AuthorizeUserService]
     },
     {
         path: 'posilki',
         component: UserMealsComponent,
-        canActivate: [AuthorizeUserService]
     },
     {
         path: 'dodaj-posilek',
         component: AddMealComponent,
-        canActivate: [AuthorizeUserService]
     },
     {
         path: 'kalkulator-bmi',
         component: CalculatorBmiComponent,
-        canActivate: [AuthorizeUserService]
     },
     {
         path: '',

@@ -2,3 +2,23 @@
 <br />Przycisk dodaj posiłek
 <br />Klikniecie powoduje mozliwosc dodania produktow do posilku (wagi poszczegonych produktow i wartosci energetycznej)
 <br />Mozna dodac maks 5 posiłków
+<div *ngIf="userMeals.length > 0">
+    <h1>Twoje posiłki:</h1>
+    <div *ngFor="let meal of userMeals">
+        <span>Nazwa: {{ meal.name}}</span>
+        <span>Kcal: {{ meal.kcal}}</span>
+        <span>Bialko: {{ meal.protein}}</span>
+        <span>weglowodany: {{ meal.carbo}}</span>
+        <span>Tluszcz: {{ meal.fat}}</span>
+    </div>
+</div>
+<div *ngIf="isAddingMeal">
+    <input type="text" [(ngModel)]="addingMeal.name" placeholder="podaj nazwe">
+    <input type="number" [(ngModel)]="addingMeal.kcal" placeholder="podaj kcal">
+    <input type="number" [(ngModel)]="addingMeal.protein" placeholder="podaj bialko">
+    <input type="number" [(ngModel)]="addingMeal.carbo" placeholder="podaj weglowodany">
+    <input type="number" [(ngModel)]="addingMeal.fat" placeholder="podaj tluszcz">
+    <button type="button" (click)="saveMeal()">Zapisz posiłek</button>
+</div>
+<button (click)="addMeal()">Dodaj posiłek</button>
+<button [disabled]="userMeals.length === 0" (click)="saveAllMeals()">Zapisz wszystkie posiłki</button>
