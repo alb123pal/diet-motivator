@@ -1,11 +1,44 @@
 <h1>
   Rekomendowanie diety
 </h1>
-<div>
+<!-- <div>
   <div *ngFor="let diet of rangeDietKcal">
     <div (click)="showDetailsDiet(diet)">Przedział kalori {{diet}}</div>
 
   </div>
 </div>
 <br/> Wyswietlanie tam z 7 diet
-<br /> Klikniecie w jedna pokazuje szczegóły danej diety
+<br /> Klikniecie w jedna pokazuje szczegóły danej diety -->
+<div>
+  <label for="calories">Filtruj dane:</label>
+  <select (change)="chooseDietRange($event)" name="calories" id="calories">
+    <option value="Wszystko">Wszystko</option>
+    <option value="1500">1500</option>
+    <option value="2000">2000</option>
+  </select>
+</div>
+<div class="diet-container" *ngFor="let diet of diets">
+  <div class="main-diet">
+    <div class="diet-header">
+      <h2>{{ diet.name }} ({{ diet.calories }} kcal)</h2>
+    </div>
+    <div class="diet-content-single">
+      <div class="diet-content" *ngFor="let meal of diet.meals">
+        <div class="meal-container">
+          <h3>{{ meal.type }}</h3>
+          <hr>
+          <p><strong>{{ meal.name }}</strong></p>
+          <p><strong>Kalorie:</strong> {{ meal.calories }}</p>
+          <p><strong>Lista składników:</strong></p>
+          <ul>
+            <li *ngFor="let ing of meal.ingredients">
+              {{ ing }}
+            </li>
+          </ul>
+          <p><strong>Sposób przygotowania:</strong></p>
+          <p>{{ meal.recipe }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

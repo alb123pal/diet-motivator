@@ -1,0 +1,21 @@
+.main-diet {
+    display: block;
+    width: 70%;
+    margin: 20px auto;
+}
+
+.diet-content-single {
+    display: flex;
+    justify-content: space-between;
+}
+
+.diet-content {
+    border: solid 1px;
+    padding: 0 20px;
+}
+
+.diet-header {
+    border: solid 1px;
+    text-align: center;
+    padding: 10px 0;
+}
