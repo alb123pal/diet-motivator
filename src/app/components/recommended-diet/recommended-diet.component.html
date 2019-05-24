@@ -9,7 +9,9 @@
 </div>
 <br/> Wyswietlanie tam z 7 diet
 <br /> Klikniecie w jedna pokazuje szczegóły danej diety -->
-<div>
+
+
+<!-- <div>
   <label for="calories">Filtruj dane:</label>
   <select (change)="chooseDietRange($event)" name="calories" id="calories">
     <option value="Wszystko">Wszystko</option>
@@ -40,5 +42,40 @@
         </div>
       </div>
     </div>
+  </div>
+</div> -->
+
+<div id="diets-list-container">
+  <div id="diet-weight-container">
+    <label for="calories">Wybierz kaloryczność diety: </label>
+    <select (change)="chooseDietRange($event)" name="calories" id="calories">
+      <option value="Wszystko">Wszystko</option>
+      <option value="1500">1500 kcal</option>
+      <option value="2000">2000 kcal</option>
+    </select>
+  </div>
+  <div>
+    <table>
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Nazwa Diety</th>
+          <th>Kaloryczność</th>
+          <th>Liczba Posiłków</th>
+          <th>Szczegółowe informacje</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let diet of diets">
+          <td>{{ diet.id }}</td>
+          <td>{{ diet.name }}</td>
+          <td>{{ diet.calories }} kcal</td>
+          <td>{{ diet.meals.length }}</td>
+          <td>
+            <button (click)="getDietDetails(diet.name)">Zobacz więcej</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
   </div>
 </div>

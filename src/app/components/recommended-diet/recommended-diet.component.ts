@@ -13,6 +13,7 @@ export class RecommendedDietComponent implements OnInit {
 
   diets: Diet[];
   queryValue: string;
+  selectedDiet: string;
 
   rangeDietKcal: string[] = [
     'Wszystko',
@@ -45,6 +46,11 @@ export class RecommendedDietComponent implements OnInit {
     this.dietService.deleteDiet(id);
   }
 
+  getDietDetails(dietName: string): void {
+    this._router.navigate(['szczegoly-diety', dietName]);
+    // console.log(dietName);
+  }
+
   chooseDietRange(event: any) {
     this.queryValue = event.target.value;
     let query = this.dietService.getDatabase().collection('diets', ref => ref.where('calories', '==', +this.queryValue)).snapshotChanges();
@@ -70,9 +76,9 @@ export class RecommendedDietComponent implements OnInit {
     }
   }
 
-  showDetailsDiet(diet: string) {
-    this._router.navigate(['szczegoly-diety', diet]);
-  }
+  // showDetailsDiet(diet: string) {
+  //   this._router.navigate(['szczegoly-diety', diet]);
+  // }
 
 }
 

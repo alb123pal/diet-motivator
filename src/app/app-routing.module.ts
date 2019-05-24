@@ -43,7 +43,7 @@ const routes: Routes = [
         component: RecommendedDietComponent,
     },
     {
-        path: 'szczegoly-diety/:diet',
+        path: 'szczegoly-diety/:dietName',
         component: DetailsDietComponent,
     },
     {
