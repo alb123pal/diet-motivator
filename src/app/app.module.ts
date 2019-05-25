@@ -19,7 +19,6 @@ import { DetailsDietComponent } from './components/details-diet/details-diet.com
 
 import { AuthorizeUserService } from './services/autorize-user.service';
 import { CustomValidators } from './form/custom-validators';
-import { ProductFilterPipe } from './components/products-list/product-filter.pipe';
 import { AddMealComponent } from './components/add-meal/add-meal.component';
 
 import { AngularFireModule } from '@angular/fire';
@@ -41,7 +40,6 @@ import { environment } from '../environments/environment';
     UserMealsComponent,
     RegisterUserComponent,
     UserDetailsComponent,
-    ProductFilterPipe,
     DetailsDietComponent,
     AddMealComponent,
   ],
@@ -51,6 +49,7 @@ import { environment } from '../environments/environment';
     HttpClientModule,
     ReactiveFormsModule,
     FormsModule,
+
     AngularFireModule.initializeApp(
       environment.firebase
     ),
@@ -58,6 +57,7 @@ import { environment } from '../environments/environment';
     AngularFireDatabaseModule
   ],
   providers: [
+
       AuthorizeUserService,
       AngularFireAuthModule,
       CustomValidators,

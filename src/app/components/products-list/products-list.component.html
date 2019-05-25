@@ -1,8 +1,8 @@
 <div >
     <p>Szukaj produktów </p>
-    <input class="input" placeholder="Szukaj produktu"  name="filter" (input)="searchProduct($event)"/>
+    <input #searchProductInput class="input" placeholder="Szukaj produktu"  name="filter"/>
 </div>
-<div>
+<div *ngIf="allProducts.length > 0">
     <h1>Lista produktów</h1>
     <table>
         <thead>
@@ -15,7 +15,7 @@
             </tr>
         </thead>
         <tbody>
-            <div *ngFor="let product of allProducts | productFilter: productFilter">
+            <div *ngFor="let product of allProducts">
                 <tr>
                     <th>{{product.name}}</th>
                     <th>{{product.kcal}}</th>
@@ -27,4 +27,6 @@
         </tbody>
     </table>
 </div>
-<button type="button" (click)="getAllProducts()">Pobierz produkty</button>
+<div *ngIf="allProducts.length === 0">
+    <h1>Wprowadź nazwę produktu aby sprawdzić kaloryczność</h1>
+</div>
