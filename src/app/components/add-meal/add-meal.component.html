@@ -20,7 +20,7 @@
       <span>tluszcz</span>
       <input [(ngModel)]="newMeal.fat" type="text" placeholder="Podaj tluszcz"/>
   </div>
-  <div>
+  <div *ngIf="!isRegister">
       <span>przepis</span>
       <input [(ngModel)]="newMeal.receipt" type="text" placeholder="Podaj przepis"/>
   </div>

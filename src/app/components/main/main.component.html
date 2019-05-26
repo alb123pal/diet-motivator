@@ -1,14 +1,4 @@
-<h1>Główny root (po zalogowaniu)</h1>
-<br/>Tutaj powinno byc:
-<br/>Główne informacje o uzytkowniku:
-<br/>- jego waga,wzrost BMI,
-<br/>- cele,
-<br />- nie wiem co z tymi punktami (ze uzytkownik za kazdy wprowadzony posiłek dostaje punkty i jak osiagnie okreslona liczbe punktow to moze zjesc cos niezdrowego
-<br /> i jak wprowadzi ten niezdrowy posilek to wyswietlamy albo te memy, albo jak sie uda to zablokowac telefon czy cos w tym stylu
-<br/>- aktualna dieta uzytkownika( jesli nie ma to jakis przycisk ułóż diete),
-<br/>- zapotrzebowanie kaloryczne na dzien(ile juz zjadl kcal i ile mu zostało),
-<br/> 
-<br/>   
+<h1>Główny root (po zalogowaniu)</h1>  
 <div>
     <div class="row">
         <span>Waga: {{user.weight}} kg</span> <br /> 
@@ -31,11 +21,19 @@
         <span>Pozostało: {{user.remainKcal}} </span>
         <span>Aktywność fizyczna: -{{user.exercise}} </span>
     </div>
+    <button (click)="test()">Pobierz zawartosc z sesion storage</button>
+    <h1>{{ elo }}</h1>
     <div class="row">
-       <br /> <span>Dziennik wprowadzonych posiłków</span>
-       <br /> <span>Posiłek 1: {{user.meal1}}</span>
-       <br /> <span>Posiłek 2: {{user.meal2}}</span>
-       <br /> <span>Posiłek 3: {{user.meal3}}</span>
+       <br /> <h1>Dziennik wprowadzonych posiłków</h1>
+        <app-add-meal [isRegister]="true" (addedMeal)="addMealToDemandKcal($event)"></app-add-meal>
+        <h1>Wprowadzone posiłki</h1>
+        <div *ngFor="let meal of addedMeals">
+            <span>Nazwa: {{ meal.name}}</span>
+            <span>Kcal: {{ meal.kcal}}</span>
+            <span>Bialko: {{ meal.protein}}</span>
+            <span>weglowodany: {{ meal.carbo}}</span>
+            <span>Tluszcz: {{ meal.fat}}</span>
+        </div>
     </div>
 </div>
 <hr />

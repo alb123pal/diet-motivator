@@ -7,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MainComponent implements OnInit {
   user;
+  addedMeals = [];
+  elo: string;
   constructor() { }
 
   ngOnInit() {
@@ -24,5 +26,14 @@ export class MainComponent implements OnInit {
       meal3: 'twaróg',
       meal4: ''
     }
+  }
+
+  addMealToDemandKcal(meal) {
+    this.addedMeals.push(meal);
+  }
+
+  test() {
+    window.localStorage.setItem('key', 'Test123123');
+    this.elo = window.localStorage.getItem('key');
   }
 }

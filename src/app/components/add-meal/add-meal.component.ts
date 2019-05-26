@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
 @Component({
@@ -7,6 +7,8 @@ import { HttpClient } from '@angular/common/http';
   styleUrls: ['./add-meal.component.scss']
 })
 export class AddMealComponent implements OnInit {
+  @Input('isRegister') isRegister: boolean;
+  @Output('addedMeal') addedMeal = new EventEmitter<any>();
   newMeal = {
     name: '',
     kcal: '',
@@ -21,8 +23,9 @@ export class AddMealComponent implements OnInit {
   }
 
   saveMeal() {
-    console.log(this.newMeal);
+    if(this.isRegister) {
+      this.addedMeal.emit(this.newMeal);
+    }
     // Request do backendu
-
   }
 }
