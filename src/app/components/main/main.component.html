@@ -17,17 +17,15 @@
     <div class="row">
         <span>Punkty na niezdrowe jedzenie: 5 </span>
         <span>Dzienny bilans kaloryczny: {{user.totalDayKcal}} </span>
-        <span>Posiłki: {{user.ateKcal}} </span>
-        <span>Pozostało: {{user.remainKcal}} </span>
+        <span>Posiłki: {{dailyAteKcal}} </span>
+        <span>Pozostało: {{dailyRemainKcal}} </span>
         <span>Aktywność fizyczna: -{{user.exercise}} </span>
     </div>
-    <button (click)="test()">Pobierz zawartosc z sesion storage</button>
-    <h1>{{ elo }}</h1>
     <div class="row">
        <br /> <h1>Dziennik wprowadzonych posiłków</h1>
-        <app-add-meal [isRegister]="true" (addedMeal)="addMealToDemandKcal($event)"></app-add-meal>
+        <app-add-meal [isRegister]="true" (addedMeal)="addMealToDailyKcal($event)"></app-add-meal>
         <h1>Wprowadzone posiłki</h1>
-        <div *ngFor="let meal of addedMeals">
+        <div *ngFor="let meal of dailyMeals">
             <span>Nazwa: {{ meal.name}}</span>
             <span>Kcal: {{ meal.kcal}}</span>
             <span>Bialko: {{ meal.protein}}</span>
@@ -36,5 +34,4 @@
         </div>
     </div>
 </div>
-<hr />
 

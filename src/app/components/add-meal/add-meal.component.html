@@ -22,7 +22,7 @@
   </div>
   <div *ngIf="!isRegister">
       <span>przepis</span>
-      <input [(ngModel)]="newMeal.receipt" type="text" placeholder="Podaj przepis"/>
+      <input [ngModel]="newMeal.receipt" type="text" placeholder="Podaj przepis"/>
   </div>
   <button (click)="saveMeal()">Dodaj posiłek</button>
 </div>
