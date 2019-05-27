@@ -29,10 +29,8 @@ export class AuthorizeUserService /*implements CanActivate*/ {
     }
 
     createAccount(createUserForm) {
-        debugger;
-        return this.afAuth.auth.createUserWithEmailAndPassword(createUserForm.login, createUserForm.passwordGroup.password)
+        return this.afAuth.auth.createUserWithEmailAndPassword(createUserForm.email, createUserForm.passwordGroup.password)
             .then((result) => {
-                debugger;
                 this.navigateLoggedUser();
             })
             .catch(function (error) {
@@ -44,7 +42,7 @@ export class AuthorizeUserService /*implements CanActivate*/ {
     loginWithEmail(loginCredentials) {
         return this.afAuth.auth.signInWithEmailAndPassword(loginCredentials.login, loginCredentials.password)
         .then((result) => {
-            this.navigateLoggedUser();
+            this.navigateLoggedUser('main');
         })
         .catch(function (error) {
             var errorCode = error.code;
@@ -71,10 +69,10 @@ export class AuthorizeUserService /*implements CanActivate*/ {
         })
     }
 
-    navigateLoggedUser() {
+    navigateLoggedUser(route = 'ustawienia-konta') {
         this.uid.subscribe((uid) => {
             if (uid) {
-                this._router.navigate(['ustawienia-konta']);
+                this._router.navigate([route]);
             }
         })
     }

@@ -57,6 +57,14 @@ export class LoginComponent implements OnInit {
         this.authorizeUserService.loginWithEmail(loginCredentials)
       }
 
+      loginWithGoogle() {
+        this.authorizeUserService.loginWithGoogle();
+      }
+
+      loginWithFacebook() {
+        this.authorizeUserService.loginWithFacebook();
+      }
+
   navigateToRegisterAccount() {
     this._router.navigate(['stworz-uzytkownika']);
   }
