@@ -1,5 +1,5 @@
 <h1>Diet Motivator</h1>
-<div *ngIf="userService.uid | async as uid; else login">
+<div *ngIf="isLogged">
     <button (click)="userService.logout()">Wyloguj się</button>
 </div>
 

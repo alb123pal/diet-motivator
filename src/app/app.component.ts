@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { AuthorizeUserService } from './services/autorize-user.service';
 
 @Component({
@@ -6,10 +6,17 @@ import { AuthorizeUserService } from './services/autorize-user.service';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   title = 'diet-motivator';
+  isLogged = false;
 
   constructor(public userService: AuthorizeUserService) {
     
+  }
+
+  ngOnInit() {
+    this.userService.isAuthorize$.subscribe((isLogged) => {
+      this.isLogged = isLogged;
+    });
   }
 }

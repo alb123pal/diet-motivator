@@ -1,6 +1,6 @@
 import { Router } from '@angular/router';
 import { Injectable } from '@angular/core';
-import { of as observableOf } from 'rxjs';
+import { Subject } from 'rxjs';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { map } from 'rxjs/operators';
 import { auth } from 'firebase';
@@ -8,11 +8,9 @@ import { auth } from 'firebase';
 @Injectable()
 
 export class AuthorizeUserService /*implements CanActivate*/ {
-    newUserEmail: string = '';
-    newUserPassword: string = '';
+    private authorizationSource = new Subject<boolean>();
 
-    userEmail: string = '';
-    userPassword: string = '';
+    isAuthorize$ = this.authorizationSource.asObservable();
 
     uid = this.afAuth.authState.pipe(
         map(authState => {
@@ -24,9 +22,7 @@ export class AuthorizeUserService /*implements CanActivate*/ {
         })
     );
 
-    constructor(private _router: Router, private afAuth: AngularFireAuth) {
-
-    }
+    constructor(private _router: Router, private afAuth: AngularFireAuth) {}
 
     createAccount(createUserForm) {
         return this.afAuth.auth.createUserWithEmailAndPassword(createUserForm.email, createUserForm.passwordGroup.password)
@@ -64,6 +60,7 @@ export class AuthorizeUserService /*implements CanActivate*/ {
         this.afAuth.auth.signOut();
         this.uid.subscribe((uid) => {
             if (!uid) {
+                this.authorizationSource.next(false);
                 this._router.navigate(['login']);
             }
         })
@@ -72,6 +69,7 @@ export class AuthorizeUserService /*implements CanActivate*/ {
     navigateLoggedUser(route = 'ustawienia-konta') {
         this.uid.subscribe((uid) => {
             if (uid) {
+                this.authorizationSource.next(true);
                 this._router.navigate([route]);
             }
         })
