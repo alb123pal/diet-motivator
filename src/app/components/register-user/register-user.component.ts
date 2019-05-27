@@ -5,6 +5,7 @@ import { FormBuilder, FormGroup, Validators} from '@angular/forms';
 import { CustomValidators } from '../../form/custom-validators';
 import { ValidationErrorMessages } from '../../form/validation-messages';
 import { debounceTime } from 'rxjs/operators';
+import { AuthorizeUserService } from '../../services/autorize-user.service';
 
 @Component({
   selector: 'app-register-user',
@@ -14,21 +15,19 @@ import { debounceTime } from 'rxjs/operators';
 export class RegisterUserComponent implements OnInit {
   createUserForm: FormGroup;
   formErrors = {
-    name: '',
-    surname: '',
     email: '',
-    login: '',
     passwordGroup: ''
   };
 
-  constructor(private _router: Router, private _fb: FormBuilder, private _http: HttpClient) { }
+  constructor(private _router: Router, 
+              private _fb: FormBuilder, 
+              private _http: HttpClient, 
+              public userService: AuthorizeUserService
+             ) { }
 
   ngOnInit() {
     this.createUserForm = this._fb.group({
-      name: ['', [Validators.required]],
-      surname: ['', [Validators.required]],
       email: ['', [Validators.required, Validators.minLength(5), Validators.email]],
-      login: ['', [Validators.required, Validators.minLength(3)]],
       passwordGroup: 
         this._fb.group({
           password: ['', [CustomValidators.passwordStrength]],
@@ -58,6 +57,6 @@ export class RegisterUserComponent implements OnInit {
   }
 
   createNewUser() {
-    //TODO: request to firebase and login user to app
+    this.userService.createAccount(this.createUserForm.value);
   }
 }

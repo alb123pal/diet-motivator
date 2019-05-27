@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { AuthorizeUserService } from './services/autorize-user.service';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +8,8 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'diet-motivator';
+
+  constructor(public userService: AuthorizeUserService) {
+    
+  }
 }

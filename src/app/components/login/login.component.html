@@ -1,6 +1,6 @@
-<!-- <div>
-  <h1>Komponent z logowaniem</h1>
-  <form [formGroup]="loginForm" (ngSubmit)="authorizeUser(loginForm)">
+<div #login>
+  <div>
+    <form [formGroup]="loginForm" (ngSubmit)="authorizeUser(loginForm)">
       <label>Login: </label>
       <input type="text" placeholder="login" formControlName="login">
       <span *ngIf="formErrors.login">{{ formErrors.login }}</span>
@@ -9,38 +9,13 @@
       <input type="password" placeholder="hasło" formControlName="password">
       <span *ngIf="loginForm.controls.password?.hasError('passwordStrength')">{{ loginForm.controls.password.errors?.passwordStrength }}</span>
       <button type="submit" [disabled]="loginForm.invalid">Zaloguj się</button>
-      <button type="button" (click)="createNewUser()">Zarejestruj się</button>
-  </form>
-</div> -->
-<div *ngIf="userService.uid | async as uid; else login">
-  <h3>You are now logged in as {{ uid }}</h3>
-  <button (click)="userService.logout()">Logout</button>
-</div>
-<ng-template #login>
-  <div>
-    <h3>Zaloguj się na swoje konto</h3>
-    <label for="email">Podaj adres email</label>
-    <input type="text" name="email" id="email" [(ngModel)]="userService.userEmail"><br>
-    <label for="password">Podaj hasło</label>
-    <input type="password" name="password" id="password" [(ngModel)]="userService.userPassword"><br>
-    <div>
-        <button (click)="userService.loginWithEmail()">Zaloguj</button>
-    </div>
+    </form>
     <div class="socials">
       <h3>Zaloguj przez socjale</h3>
         <button (click)="userService.loginWithGoogle()">Zaloguj z Google</button>
         <button (click)="userService.loginWithFacebook()">Zaloguj z Facebook</button>
+        <button (click)="navigateToRegisterAccount()">Zarejestruj się</button>
     </div>
   </div>
   <hr>
-  <div>
-    <h3>Stwórz nowe konto</h3>
-    <label for="new-email">Podaj adres email</label>
-    <input type="text" name="new-email" id="new-email" [(ngModel)]="userService.newUserEmail"><br>
-    <label for="new-password">Podaj hasło</label>
-    <input type="password" name="new-password" id="new-password" [(ngModel)]="userService.newUserPassword"><br>
-    <div>
-        <button (click)="userService.createAccount()">Zarejestruj</button>
-    </div>
-  </div>
-</ng-template>
+</div>

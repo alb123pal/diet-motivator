@@ -1,4 +1,4 @@
-import { CanActivate, Router } from '@angular/router';
+import { Router } from '@angular/router';
 import { Injectable } from '@angular/core';
 import { of as observableOf } from 'rxjs';
 import { AngularFireAuth } from '@angular/fire/auth';
@@ -28,12 +28,12 @@ export class AuthorizeUserService /*implements CanActivate*/ {
 
     }
 
-    createAccount() {
-        console.log(this.newUserEmail + this.newUserPassword);
-        return this.afAuth.auth.createUserWithEmailAndPassword(this.newUserEmail, this.newUserPassword)
+    createAccount(createUserForm) {
+        debugger;
+        return this.afAuth.auth.createUserWithEmailAndPassword(createUserForm.login, createUserForm.passwordGroup.password)
             .then((result) => {
-                window.alert("You have been successfully registered!");
-                console.log(result.user)
+                debugger;
+                this.navigateLoggedUser();
             })
             .catch(function (error) {
                 var errorCode = error.code;
@@ -41,10 +41,10 @@ export class AuthorizeUserService /*implements CanActivate*/ {
             });
     }
 
-    loginWithEmail() {
-        return this.afAuth.auth.signInWithEmailAndPassword(this.newUserEmail, this.newUserPassword)
+    loginWithEmail(loginCredentials) {
+        return this.afAuth.auth.signInWithEmailAndPassword(loginCredentials.login, loginCredentials.password)
         .then((result) => {
-            window.alert("You have been successfully logged in!");
+            this.navigateLoggedUser();
         })
         .catch(function (error) {
             var errorCode = error.code;
@@ -54,14 +54,29 @@ export class AuthorizeUserService /*implements CanActivate*/ {
 
     loginWithGoogle() {
         this.afAuth.auth.signInWithPopup(new auth.GoogleAuthProvider());
+        this.navigateLoggedUser();
     }
 
     loginWithFacebook() {
         this.afAuth.auth.signInWithPopup(new auth.FacebookAuthProvider());
+        this.navigateLoggedUser();
     }
 
     logout() {
         this.afAuth.auth.signOut();
+        this.uid.subscribe((uid) => {
+            if (!uid) {
+                this._router.navigate(['login']);
+            }
+        })
+    }
+
+    navigateLoggedUser() {
+        this.uid.subscribe((uid) => {
+            if (uid) {
+                this._router.navigate(['ustawienia-konta']);
+            }
+        })
     }
 
 
