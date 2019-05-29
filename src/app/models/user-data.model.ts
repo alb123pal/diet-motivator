@@ -7,7 +7,6 @@ export class UserInfo {
     height: number;
     age: number;
     BMI: number;
-    purpose: string;
+    currentDiet: string;
     demandKcal: number;
-    friendPhone: string;
 }
