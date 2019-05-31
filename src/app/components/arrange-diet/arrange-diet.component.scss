@@ -1,0 +1,45 @@
+.arrange-diet {
+  background-color: #43731d;
+  padding: 50px 20px;
+}
+
+.subheader {
+  display: block;
+  color: #9ea697;
+  font-size: 1.4rem;
+  margin: 10px 0;
+  text-align: center;
+}
+
+.meal-item {
+  background-color: #fff;
+  padding: 10px 40px;
+  margin: 30px 0;
+  &:first-child {
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+  }
+  &:last-child {
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+  }
+  &__group {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    margin: 5px 0;
+  }
+  &__header {
+    color: #43731d;
+    font-size: 1.6rem;
+    font-weight: 600;
+    margin-right: 10px;
+    
+  }
+  &__text {
+    color: #43731d;
+    font-size: 1.6rem;
+    font-weight: 400;
+  }
+}
+
