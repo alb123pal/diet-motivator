@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router} from '@angular/router';
+import { UserMealsService} from '../../services/user-meals.service';
+import { UserMeal } from '../../models/user-meal.model';
 
 @Component({
   selector: 'app-user-meals',
@@ -7,40 +9,19 @@ import { Router} from '@angular/router';
   styleUrls: ['./user-meals.component.scss']
 })
 export class UserMealsComponent implements OnInit {
-  userMeals = [
-    {
-      name: 'kotlet',
-      kcal: 1500,
-      proteins: 22,
-      carbo: 34,
-      fat: 50
-    },
-    {
-      name: 'pierogi',
-      kcal: 1500,
-      proteins: 22,
-      carbo: 34,
-      fat: 50
-    },
-    {
-      name: 'pizza',
-      kcal: 1500,
-      proteins: 22,
-      carbo: 34,
-      fat: 50
-    },
-    {
-      name: 'twarog',
-      kcal: 1500,
-      proteins: 22,
-      carbo: 34,
-      fat: 50
-    }
-  ];
+  userMeals: UserMeal[];
   
-  constructor(private _router: Router) { }
+  constructor(private _router: Router, private uMeals: UserMealsService) { }
 
   ngOnInit() {
+    this.uMeals.getUserMeal().subscribe(data => {
+      this.userMeals = data.map(e => {
+        return {
+          id: e.payload.doc.id,
+          ...e.payload.doc.data()
+        } as UserMeal;
+      })
+    });
   }
 
   addMeal() {

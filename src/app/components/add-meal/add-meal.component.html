@@ -6,7 +6,7 @@
   </div>
   <div>
       <span>Kcal</span>
-      <input [(ngModel)]="newMeal.kcal" type="text" placeholder="Kcal"/>
+      <input [(ngModel)]="newMeal.calories" type="text" placeholder="Kcal"/>
   </div>
   <div>
       <span>białko</span>
@@ -22,7 +22,15 @@
   </div>
   <div *ngIf="!isRegister">
       <span>przepis</span>
-      <input [ngModel]="newMeal.receipt" type="text" placeholder="Podaj przepis"/>
+      <input [(ngModel)]="newMeal.recipe" type="text" placeholder="Podaj przepis"/>
   </div>
-  <button (click)="saveMeal()">Dodaj posiłek</button>
+  <div *ngIf="!isRegister">
+    <span>składniki</span>
+    <input [(ngModel)]="mealIngredients" type="text" placeholder="Podaj składniki po przecinku"/>
+</div>
+  <div>
+    <label for="file">File:</label>
+    <input type="file" (change)="upload($event)" />
+  </div>
+  <button [disabled]="!imageUploaded" (click)="saveMeal()">Dodaj posiłek</button>
 </div>
