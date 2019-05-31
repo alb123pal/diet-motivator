@@ -1,4 +1,5 @@
-<div>
+<div class="container">
+<div class="add-meal">
   <h1>Dodaj posilek</h1>
   <div>
       <span>Nazwa posiłku</span>
@@ -33,4 +34,5 @@
     <input type="file" (change)="upload($event)" />
   </div>
   <button [disabled]="!imageUploaded" (click)="saveMeal()">Dodaj posiłek</button>
+</div>
 </div>

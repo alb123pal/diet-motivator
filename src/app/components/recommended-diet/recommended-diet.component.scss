@@ -1,28 +1,15 @@
-#diets-list-container {
-    max-width: 70%;
-    margin: 20px auto;
-}
-
-#diet-weight-container {
-    margin: 10px 0;
-}
-
-table {
+.diet-button {
+    display: block;
+    border: 0;
+    background-color: #43731d;
+    background-size: cover;
+    background-repeat: no-repeat;
+    min-height: 150px;
+    display: block;
     width: 100%;
 }
 
-tr {
-    display: flex;
-    justify-content: space-evenly;
-}
-
-th {
-    background: lightgreen;
-}
-
-td, th {
-    text-align: center;
-    border: solid 2px black;
-    flex: 0 0 20%;
-    padding: 20px 0;
+.diet-lists {
+    background-color: #dbe9d0;
+    padding: 50px 20px;
 }
