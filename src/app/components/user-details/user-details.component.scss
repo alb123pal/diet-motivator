@@ -1,3 +1,38 @@
-span {
-    display: block;
+.user-top-info {
+    text-align: center;
+    padding: 30px 20px;
+    &__icon {
+        width: 100px;
+        height: 100px;
+    }
+    &__name {
+        font-size: 2rem;
+        color: #43731d;
+        font-weight: 500; 
+    }
+}
+
+.user-info { 
+    background-color: #43731d;
+    padding: 40px 30px;
+    &__item {
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        border-bottom: 1px solid #9ea697;
+        padding: 20px 0;
+        &:last-child {
+            border: 0;
+        }
+    }
+    &__icon {
+        width: 50px;
+        height: 50px;
+        margin-right: 30px;
+    }
+    &__text {
+        color: #9ea697;
+        font-size: 1.4rem;
+        margin-top: 15px;
+    }
 }

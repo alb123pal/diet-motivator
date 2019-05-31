@@ -27,7 +27,6 @@ import { AngularFireDatabaseModule } from '@angular/fire/database';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { AngularFireStorageModule } from '@angular/fire/storage';
 import { environment } from '../environments/environment';
-import { UploadFormComponent } from './uploads/upload-form/upload-form.component';
 
 @NgModule({
   declarations: [
@@ -44,7 +43,6 @@ import { UploadFormComponent } from './uploads/upload-form/upload-form.component
     UserDetailsComponent,
     DetailsDietComponent,
     AddMealComponent,
-    UploadFormComponent,
   ],
   imports: [
     BrowserModule,
