@@ -33,7 +33,7 @@ export class HomePage {
     //   alert('sms has permission: ' + elo);
     // });
 
-    this.sms.send('792036750', 'KCKCKCKC').then(() => {
+    this.sms.send('792036750', 'Zejdziesz na chwilę na dół. Ma do Ciebie prośbe, prosze').then(() => {
       alert('doszlo');
     }).catch((error) => {
       alert('error:' + error);
