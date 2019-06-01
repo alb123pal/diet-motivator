@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-dropdown-navigator',
@@ -7,9 +8,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DropdownNavigatorComponent implements OnInit {
 
-  constructor() { }
+  constructor(private _router: Router) { }
 
   ngOnInit() {
   }
 
+  navigateTo(route: string) {
+    this._router.navigate([route]);
+  }
 }
