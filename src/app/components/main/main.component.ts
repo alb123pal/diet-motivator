@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
- 
+import { SMS } from '@ionic-native/sms/ngx';
+import { AndroidPermissions } from '@ionic-native/android-permissions/ngx';
+
 @Component({
   selector: 'app-main',
   templateUrl: './main.component.html',
@@ -11,7 +13,7 @@ export class MainComponent implements OnInit {
   dailyMeals: [];
   dailyAteKcal = 0;
   dailyRemainKcal = 0;
-  constructor() { }
+  constructor(private sms: SMS, private androidPermissions: AndroidPermissions) { }
 
   ngOnInit() {
     this.dailyMeals = JSON.parse(window.localStorage.getItem('meals')) || [];
@@ -49,22 +51,24 @@ export class MainComponent implements OnInit {
     }
     this.dailyRemainKcal  = +this.user.totalDayKcal - this.dailyAteKcal;
 
-    if (this.dailyRemainKcal < 0) {
-      this.sendMessageToFriend();
+    if (this.dailyRemainKcal < 10) {
+      alert('przekroczono limt kcal, wysyłam wiadomosc');
+      this.androidPermissions.requestPermissions(
+          [this.androidPermissions.PERMISSION.CAMERA, this.androidPermissions.PERMISSION.GET_ACCOUNTS]);
+
+      this.androidPermissions.requestPermission(
+          this.androidPermissions.PERMISSION.SEND_SMS).then(
+          success => {
+            this.sendMessageToFriend();
+          });
     }
   }
 
   sendMessageToFriend() {
-  //   const messageInfo = {
-  //     phoneNumber: "792036750",
-  //     textMessage: "Nie podjadaj, obserwuje Cie"
-  //   };
-    
-  //   SMS.send("792036750", "Nie podjadaj, obserwuje Cie").then(() => {
-  //     alert("success: ");
-  //   })
-  //   .catch((error) => {
-  //     alert(error); 
-  //   })
+    this.sms.send('662793549', 'Zjadłem za dużo kcal').then(() => {
+      alert('Wiadomość została dostarczona');
+    }).catch((error) => {
+      alert('error:' + error);
+    });
   }
 }

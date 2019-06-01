@@ -1,7 +1,5 @@
 import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
-
-// Components
+import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from './components/login/login.component';
 import { MainComponent } from './components/main/main.component';
 import { ArrangeDietComponent } from './components/arrange-diet/arrange-diet.component';
@@ -15,67 +13,66 @@ import { DetailsDietComponent } from './components/details-diet/details-diet.com
 import { AddMealComponent } from './components/add-meal/add-meal.component';
 import { MealDetailsComponent } from './components/meal-details/meal-details.component';
 
-// Services
-import { AuthorizeUserService } from './services/autorize-user.service';
-
 const routes: Routes = [
-    {
-      path: 'login',
-      component: LoginComponent,
-    },
-    {
-       path: 'stworz-uzytkownika',
-       component: RegisterUserComponent,
-    },
-    {
-       path: 'ustawienia-konta',
-       component: UserDetailsComponent,
-    },
-    {
-       path: 'main',
-       component: MainComponent,
-    },
-    {
-        path: 'stworz-diete',
-        component: ArrangeDietComponent,
-    },
-    {
-        path: 'rekomendowane-diety',
-        component: RecommendedDietComponent,
-    },
-    {
-        path: 'szczegoly-diety/:dietName',
-        component: DetailsDietComponent,
-    },
-    {
-        path: 'lista-produktow',
-        component: ProductsListComponent,
-    },
-    {
-        path: 'posilki',
-        component: UserMealsComponent,
-    },
-    {
-        path: 'szczegoly-posilku/:mealId',
-        component: MealDetailsComponent,
-    },
-    {
-        path: 'dodaj-posilek',
-        component: AddMealComponent,
-    },
-    {
-        path: 'kalkulator-bmi',
-        component: CalculatorBmiComponent,
-    },
-    {
-        path: '',
-        redirectTo: '/login',
-        pathMatch: 'full'
-    }
+  {
+    path: 'login',
+    component: LoginComponent,
+  },
+  {
+    path: 'stworz-uzytkownika',
+    component: RegisterUserComponent,
+  },
+  {
+    path: 'ustawienia-konta',
+    component: UserDetailsComponent,
+  },
+  {
+    path: 'main',
+    component: MainComponent,
+  },
+  {
+    path: 'stworz-diete',
+    component: ArrangeDietComponent,
+  },
+  {
+    path: 'rekomendowane-diety',
+    component: RecommendedDietComponent,
+  },
+  {
+    path: 'szczegoly-diety/:dietName',
+    component: DetailsDietComponent,
+  },
+  {
+    path: 'lista-produktow',
+    component: ProductsListComponent,
+  },
+  {
+    path: 'posilki',
+    component: UserMealsComponent,
+  },
+  {
+    path: 'szczegoly-posilku/:mealId',
+    component: MealDetailsComponent,
+  },
+  {
+    path: 'dodaj-posilek',
+    component: AddMealComponent,
+  },
+  {
+    path: 'kalkulator-bmi',
+    component: CalculatorBmiComponent,
+  },
+  {
+    path: '',
+    redirectTo: '/login',
+    pathMatch: 'full'
+  }
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [
+    RouterModule.forRoot(routes, { preloadingStrategy: PreloadAllModules })
+  ],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

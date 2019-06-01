@@ -1,7 +1,5 @@
 <div *ngIf="userService.uid | async as uid; else login">
-    <button (click)="userService.logout()">Wyloguj się</button>
+  <button (click)="userService.logout()">Wyloguj się</button>
 </div>
-
 <router-outlet></router-outlet>
-
 <app-dropdown-navigator></app-dropdown-navigator>
