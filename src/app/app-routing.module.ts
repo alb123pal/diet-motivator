@@ -14,8 +14,6 @@ import { AddMealComponent } from './components/add-meal/add-meal.component';
 import { MealDetailsComponent } from './components/meal-details/meal-details.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: 'home', pathMatch: 'full' },
-  { path: 'home', loadChildren: './home/home.module#HomePageModule' },
   {
     path: 'login',
     component: LoginComponent,
