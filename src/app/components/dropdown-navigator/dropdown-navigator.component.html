@@ -3,11 +3,11 @@
 </p>
 <div>
   <span>Przyciski z nawigacji (klikniecie prziekierowywuje do innego komponentu)</span><br />
-  <a routerLink='main'>Strona główna</a>
-  <a routerLink='ustawienia-konta'>Dane użytkownika</a>
-  <a routerLink='stworz-diete'>Ułóż swoją diete</a>
-  <a routerLink='rekomendowane-diety'>Rekomendowane diety</a>
-  <a routerLink='lista-produktow'>Sprawdż kaloryczność produktów</a>
-  <a routerLink='posilki'>Zdrowe posiłki</a>
-  <a routerLink='kalkulator-bmi'>Sprawdż swoje BMI</a>
+  <div class="button-dropdown" (click)="navigateTo('main')">Strona główna</div>
+  <div class="button-dropdown" (click)="navigateTo('ustawienia-konta')">Dane użytkownika</div>
+  <div class="button-dropdown" (click)="navigateTo('stworz-diete')">Ułóż swoją diete</div>
+  <div class="button-dropdown" (click)="navigateTo('rekomendowane-diety')">Rekomendowane diety</div>
+  <div class="button-dropdown" (click)="navigateTo('lista-produktow')">Sprawdż kaloryczność produktów</div>
+  <div class="button-dropdown" (click)="navigateTo('posilki')">Zdrowe posiłki</div>
+  <div class="button-dropdown" (click)="navigateTo('kalkulator-bmi')">Sprawdż swoje BMI</div>
 </div>
