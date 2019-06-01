@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Diet } from '../../models/diet.model';
 import { Meal } from '../../models/meal.model';
 import { DietService } from '../../services/diet.service';
+import { AngularFireAuth } from '@angular/fire/auth';
 
 @Component({
   selector: 'app-arrange-diet',
@@ -11,19 +12,23 @@ import { DietService } from '../../services/diet.service';
 export class ArrangeDietComponent implements OnInit {
   userMeals: Meal[] = [];
   mealIngredients: string;
-  mealsCalories: number;
   isAddingMeal = false;
+  usersId: string;
 
-  constructor(private dietService: DietService) { }
+  constructor(private dietService: DietService, private afa: AngularFireAuth) { }
 
   ngOnInit() {
+    this.afa.user.subscribe(data => {
+      this.usersId = data.uid;
+    });
   }
 
   userDiet: Diet = {
     id: '',
     name: '',
     calories: 0,
-    meals: []
+    meals: [],
+    userId: ''
   };
 
   addingMeal: Meal = {
@@ -61,16 +66,20 @@ export class ArrangeDietComponent implements OnInit {
     this.userDiet.meals = this.userMeals;
     this.userMeals.forEach(meal => {
       this.userDiet.calories += meal.calories;
-    })
-    console.log("liczba kalori: " + this.mealsCalories + typeof(this.mealsCalories));
+    });
+    this.userDiet.userId = this.usersId;
     console.log(this.userDiet);
-    this.create(this.userDiet);
+    if(this.userDiet.name !== '' && this.userDiet.calories !== 0 &&
+    this.userDiet.meals !== []) {
+      this.create(this.userDiet);
+    }
     this.userMeals = [];
     this.userDiet = {
       id: '',
       name: '',
       calories: 0,
-      meals: []
+      meals: [],
+      userId: ''
     };
   }
 

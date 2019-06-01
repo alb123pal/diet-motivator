@@ -16,4 +16,7 @@
     </ul>
     <p><strong>Przepis: </strong><br>{{ uMeal[0].recipe }}</p>
   </div>
+  <div>
+    <button *ngIf="uMeal[0].userId === usersId" (click)="removeUserMeal(uMeal[0].id)">Usuń posiłek</button>
+  </div>
 </div>

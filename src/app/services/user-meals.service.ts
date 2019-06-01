@@ -18,12 +18,14 @@ export class UserMealsService {
     return this.firestore.collection('meals').add(meal);
   }
 
-  updateDiet(meal: UserMeal) {
+  updateUserMeal(meal: UserMeal) {
     delete meal.id;
     this.firestore.doc('meals/' + meal.id).update(meal);
   }
 
-  deleteDiet(mealName: string) {
-    this.firestore.doc('meals/' + mealName).delete();
+  deleteUserMeal(mealName: string) {
+    this.firestore.collection('meals', ref => ref.where('id', '==', mealName)).snapshotChanges().subscribe(e => {
+      this.firestore.collection("meals").doc(e[0].payload.doc.id).delete();
+    })
   }
 }
