@@ -27,4 +27,8 @@ export class UserMealsComponent implements OnInit {
   addMeal() {
     this._router.navigate(['dodaj-posilek']);
   }
+
+  showMealDetails(mealId: string): void {
+    this._router.navigate(['szczegoly-posilku', mealId]);
+  }
 }
