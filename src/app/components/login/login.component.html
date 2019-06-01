@@ -1,21 +1,26 @@
 <div #login>
-  <div>
+  <div class="login-page">
+    <div class="container">
+      <div class="logo">
+        <img class="logo__image" src="../assets/images/logo.svg">
+      </div>
     <form [formGroup]="loginForm" (ngSubmit)="authorizeUser(loginForm)">
       <label>Login: </label>
-      <input type="text" placeholder="login" formControlName="login">
+      <input class="form-input" type="text" placeholder="login" formControlName="login">
       <span *ngIf="formErrors.login">{{ formErrors.login }}</span>
 
       <label>Hasło:</label>
-      <input type="password" placeholder="hasło" formControlName="password">
+      <input class="form-input" type="password" placeholder="hasło" formControlName="password">
       <span *ngIf="loginForm.controls.password?.hasError('passwordStrength')">{{ loginForm.controls.password.errors?.passwordStrength }}</span>
-      <button type="submit" [disabled]="loginForm.invalid">Zaloguj się</button>
+      <button class="btn btn--yellow" type="submit" [disabled]="loginForm.invalid">Zaloguj się</button>
     </form>
     <div class="socials">
       <h3>Zaloguj przez socjale</h3>
-        <button (click)="loginWithGoogle()">Zaloguj z Google</button>
-        <button (click)="loginWithFacebook()">Zaloguj z Facebook</button>
-        <button (click)="navigateToRegisterAccount()">Zarejestruj się</button>
+        <button class="btn btn--google" (click)="loginWithGoogle()">Zaloguj z Google</button>
+        <button class="btn btn--facebook" (click)="loginWithFacebook()">Zaloguj z Facebook</button>
+        <button class="btn btn--yellow" (click)="navigateToRegisterAccount()">Zarejestruj się</button>
     </div>
   </div>
   <hr>
+  </div>
 </div>
