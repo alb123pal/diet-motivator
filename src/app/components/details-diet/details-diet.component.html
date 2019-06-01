@@ -10,11 +10,15 @@
   </div>
 </div> -->
 
+<div class="container">
 <div class="diet-container" *ngFor="let diet of selectedDiet">
   <div class="main-diet">
-    <div class="diet-header">
-      <h2>{{ diet.name }} ({{ diet.calories }} kcal)</h2>
+    <div class="diet-info">
+      <img class="diet-info__icon" src="../assets/images/user-icon.svg">
+      <p class="diet-info__name">{{ diet.name }}</p>
+      <p class="subheader">Liczba kalorii: {{ diet.calories }} </p>
     </div>
+    <div class="details-diet">
     <div class="diet-content-single">
       <div class="diet-content" *ngFor="let meal of diet.meals">
         <div class="meal-container">
@@ -33,5 +37,7 @@
         </div>
       </div>
     </div>
+    </div>
   </div>
+</div>
 </div>

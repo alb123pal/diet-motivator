@@ -1,29 +1,44 @@
-<h1>Kalkulator BMI</h1>
-<br/> Wylicza BMI
-<br />Aktualizacja zapotrzebowania kalorycznego
-<div>
-    <div>
-        <span>Waga</span>
-        <input type="number" #weight placeholder="Podaj swoją wagę (kg) np. 80"/>
-    </div>
-    <div>
-        <span>Wzrost</span>
-        <input type="number" #height placeholder="Podaj wzrost (m) np. 1.80"/>
-    </div>
-    <div>
-        <span>Wiek</span>
-        <input type="number" #age placeholder="Podaj wiek"/>
-    </div>
-    <div>
-        <span>Płeć</span>
-        <span>Mężczyzna:</span><input [(ngModel)]="gender" type="radio" name="gender" value="M">
-        <span>Kobieta:</span><input [(ngModel)]="gender" type="radio" name="gender" value="K">
-    </div>
+<div class="container calculator-bmi">
+  <div class="calc-item">
+    <label class="calc-item__label">Waga</label>
+		<input class="calc-item__input" type="number" #weight placeholder="">
+		<span class="calc-item__suffix">kg</span>
+  </div>
+	<div class="calc-item">
+    <label class="calc-item__label">Wzrost</label>
+		<input class="calc-item__input" type="number" #height placeholder="">
+		<span class="calc-item__suffix">cm</span>
+	</div>
+	<div class="calc-item">
+    <label class="calc-item__label">Wiek</label>
+		<input class="calc-item__input" type="number" #height placeholder="">
+		<span class="calc-item__suffix">lat</span>
+  </div>
+  <div class="calc-radio-item">
+		<div class="calc-radio-item__group">
+			<input [(ngModel)]="gender" id="men" type="radio" name="gender" value="M">
+			<label for="men">Mężczyzna</label>
+		</div>
+		<div class="calc-radio-item__group">
+			<input [(ngModel)]="gender" id="women" type="radio" name="gender" value="K">
+			<label for="women">Kobieta</label>  
+		</div>      
+  </div>
+
+<button class="btn btn--yellow" (click)="setBMI()">Wylicz BMI</button>
+<div class="calc-info">
+	<div class="calc-info__item">
+		<p class="calc-info__header">Twój wskaźnik BMI wynosi:</p>
+		<p class="calc-info__text">{{BMI}}</p>
+	</div>
+	<div class="calc-info__item">
+		<p class="calc-info__header">Znaczenie BMI:</p>
+		<p class="calc-info__text">{{indicatorBMI}}</p>
+	</div>
+	<div class="calc-info__item">
+		<p class="calc-info__header">Zapotrzebowanie kaloryczne:</p>
+		<p class="calc-info__text">{{kcalDemand}}</p>
+	</div>
 </div>
-<button (click)="setBMI()">Wylicz BMI</button>
-<div>
-    <span>Twój wskaźnik BMI wynosi: {{BMI}} </span><br />
-    <span>Znaczenie BMI: {{indicatorBMI}}</span><br/>
-    <span>Twoje podstawowe zapotrzebowanie kaloryczne wynosi: {{kcalDemand}}</span>
+<button class="btn btn--yellow" (click)="updateUserData()">Zapisz swoje dane</button>
 </div>
-<button (click)="updateUserData()">Zapisz swoje dane</button>
