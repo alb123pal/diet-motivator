@@ -1,0 +1,90 @@
+<!-- <div>
+  <div *ngFor="let diet of rangeDietKcal">
+    <div (click)="showDetailsDiet(diet)">Przedział kalori {{diet}}</div>
+
+  </div>
+</div>
+<br/> Wyswietlanie tam z 7 diet
+<br /> Klikniecie w jedna pokazuje szczegóły danej diety -->
+
+
+<!-- <div>
+  <label for="calories">Filtruj dane:</label>
+  <select (change)="chooseDietRange($event)" name="calories" id="calories">
+    <option value="Wszystko">Wszystko</option>
+    <option value="1500">1500</option>
+    <option value="2000">2000</option>
+  </select>
+</div>
+<div class="diet-container" *ngFor="let diet of diets">
+  <div class="main-diet">
+    <div class="diet-header">
+      <h2>{{ diet.name }} ({{ diet.calories }} kcal)</h2>
+    </div>
+    <div class="diet-content-single">
+      <div class="diet-content" *ngFor="let meal of diet.meals">
+        <div class="meal-container">
+          <h3>{{ meal.type }}</h3>
+          <hr>
+          <p><strong>{{ meal.name }}</strong></p>
+          <p><strong>Kalorie:</strong> {{ meal.calories }}</p>
+          <p><strong>Lista składników:</strong></p>
+          <ul>
+            <li *ngFor="let ing of meal.ingredients">
+              {{ ing }}
+            </li>
+          </ul>
+          <p><strong>Sposób przygotowania:</strong></p>
+          <p>{{ meal.recipe }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div> -->
+<div class="container diet-lists">
+	<h1>Rekomendowanie diety</h1>
+	<div id="diets-list-container">
+		<div id="diet-weight-container">
+			<label for="calories">Wybierz kaloryczność diety: </label>
+			<select (change)="chooseDietRange($event)" name="calories" id="calories">
+				<option value="Wszystko">Wszystko</option>
+				<option value="1500">1500 kcal</option>
+				<option value="2000">2000 kcal</option>
+			</select>
+		</div>
+		
+		<div>
+
+		<div class="row">
+			<div *ngFor="let diet of diets" class="col-6 mtb-25">
+				<button (click)="getDietDetails(diet.name)" class="diet-button">
+					{{ diet.name }}
+				</button>
+			</div>
+		</div>
+
+			<!-- <table>
+				<thead>
+					<tr>
+						<th>ID</th>
+						<th>Nazwa Diety</th>
+						<th>Kaloryczność</th>
+						<th>Liczba Posiłków</th>
+						<th>Szczegółowe informacje</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr >
+						<td>{{ diet.id }}</td>
+						<td>{{ diet.name }}</td>
+						<td>{{ diet.calories }} kcal</td>
+						<td>{{ diet.meals.length }}</td>
+						<td>
+							<button >Zobacz więcej</button>
+						</td>
+					</tr>
+				</tbody>
+			</table> -->
+		</div>
+	</div>
+</div>

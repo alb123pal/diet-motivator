@@ -1,0 +1,16 @@
+<div>
+    <h1>Posiłki uzytkowników</h1>
+    <div class="container">
+        <div clas="" *ngFor="let userMeal of userMeals">
+            <div class="row">
+                <span>{{userMeal.name}}</span>
+                <span>{{userMeal.calories}}</span>
+                <img (click)="showMealDetails(userMeal.id)" src={{userMeal.imageUrl}} />
+                
+            </div>
+        </div>
+    </div>
+    <button (click)="addMeal()">Dodaj posiłek</button>
+    <br/> Przcisk dodaj swoj posiłek
+    <br/> Klikniecie w posiłek pokazuje jak przgotowac i wartosci energetyczne
+</div>

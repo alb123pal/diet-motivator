@@ -1,0 +1,41 @@
+<div class="container arrange-diet">
+	<h1>Stwórz własną dietę</h1>
+	<span class="subheader">Maksymalnie możesz dodać 5 posiłków</span>
+	<div *ngIf="userMeals.length > 0">
+    <h1>Twoje posiłki:</h1>
+    <div *ngFor="let meal of userMeals">
+			<div class="meal-item">
+				<div class="meal-item__group">
+					<p class="meal-item__header">Nazwa posiłku:</p>
+					<p class="meal-item__text">{{meal.name}}</p>
+				</div>
+				<div class="meal-item__group">
+					<p class="meal-item__header">Liczba KCAL:</p>
+					<p class="meal-item__text">{{meal.kcal}}</p>
+				</div>
+				<div class="meal-item__group">
+					<p class="meal-item__header">Ilość białka:</p>
+					<p class="meal-item__text">{{meal.protein}}</p>
+				</div>
+				<div class="meal-item__group">
+					<p class="meal-item__header">Ilość węglowodanów:</p>
+					<p class="meal-item__text">{{meal.carbo}}</p>
+				</div>
+				<div class="meal-item__group">
+					<p class="meal-item__header">Ilość tłuszczów:</p>
+					<p class="meal-item__text">{{meal.fat}}</p>
+				</div>
+			</div>
+    </div>
+  </div>
+  <div *ngIf="isAddingMeal">
+    <input class="standard-input" type="text" [(ngModel)]="addingMeal.name" placeholder="Nazwa posiłku">
+  	<input class="standard-input" type="number" [(ngModel)]="addingMeal.kcal" placeholder="Liczba kalorii">
+    <input class="standard-input" type="number" [(ngModel)]="addingMeal.protein" placeholder="Ilość białka">
+    <input class="standard-input" type="number" [(ngModel)]="addingMeal.carbo" placeholder="Ilość węglowodanów">
+    <input class="standard-input" type="number" [(ngModel)]="addingMeal.fat" placeholder="Ilość tłuszczów">
+    <button class="btn btn--yellow" type="button" (click)="saveMeal()">Zapisz posiłek</button>
+  </div>
+  <button class="btn btn--yellow" (click)="addMeal()">Dodaj posiłek</button>
+  <button class="btn btn--yellow" [disabled]="userMeals.length === 0" (click)="saveAllMeals()">Zapisz wszystkie posiłki</button>
+</div>

@@ -1,0 +1,37 @@
+<h1>Główny root (po zalogowaniu)</h1>  
+<div>
+    <div class="row">
+        <span>Waga: {{user.weight}} kg</span> <br /> 
+        <span>Wzrost: {{user.height}} cm</span>
+        <span>Jak nie ma wprowadzonych danych to napis: Podaj wage i wzrost</span>
+    </div>
+    <div class="row">
+        <span>Aktualnie wybrany plan dietetyczny:
+            <span class="bold">{{user.currentDiet}}</span>
+            <div>Opis diety: jakie posiłki itd (moze dropdown wysuwajacy i chowajacy opis)</div>
+        </span>
+        <br /><span>Cel: {{user.purpose}} kg </span>
+        <span>Jeśli nie ma diety to przycisk:</span>
+        <button [routerLink]="['/stworz-diete']">Ułóż diete</button>
+    </div>
+    <div class="row">
+        <span>Punkty na niezdrowe jedzenie: 5 </span>
+        <span>Dzienny bilans kaloryczny: {{user.totalDayKcal}} </span>
+        <span>Posiłki: {{dailyAteKcal}} </span>
+        <span>Pozostało: {{dailyRemainKcal}} </span>
+        <span>Aktywność fizyczna: -{{user.exercise}} </span>
+    </div>
+    <div class="row">
+       <br /> <h1>Dziennik wprowadzonych posiłków</h1>
+        <app-add-meal [isRegister]="true" (addedMeal)="addMealToDailyKcal($event)"></app-add-meal>
+        <h1>Wprowadzone posiłki</h1>
+        <div *ngFor="let meal of dailyMeals">
+            <span>Nazwa: {{ meal.name}}</span>
+            <span>Kcal: {{ meal.kcal}}</span>
+            <span>Bialko: {{ meal.protein}}</span>
+            <span>weglowodany: {{ meal.carbo}}</span>
+            <span>Tluszcz: {{ meal.fat}}</span>
+        </div>
+    </div>
+</div>
+

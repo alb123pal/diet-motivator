@@ -1,0 +1,26 @@
+<div>
+  <h1>Komponent stwórz użytkownika</h1>
+  <form [formGroup]="createUserForm" (ngSubmit)="createNewUser(createUserForm)">
+      <h3>Stwórz nowe konto</h3>
+      <div class="form-control">
+        <label>Email:</label>
+        <input type="text" placeholder="Email" formControlName="email">
+        <span *ngIf="formErrors.email">{{ formErrors.email }}</span>
+      </div>
+      <div formGroupName="passwordGroup">
+        <label>Hasło:</label>
+        <input type="password" placeholder="Hasło" formControlName="password">
+        <span *ngIf="createUserForm.controls.passwordGroup.controls.password?.hasError('passwordStrength')">
+          {{createUserForm.controls.passwordGroup.controls.password.errors.passwordStrength}}
+        </span>
+  
+        <label>Powtórz hasło:</label>
+        <input type="password" placeholder="Powtórz hasło" formControlName="confirmedPassword">
+        <span *ngIf="createUserForm.confirmedPassword">{{ formErrors.confirmedPassword }}</span>
+        <span *ngIf="formErrors.passwordGroup">{{ formErrors.passwordGroup }}</span>
+      </div>
+      <div>
+          <button [disabled]="createUserForm.invalid">Zarejestruj</button>
+      </div>
+  </form>
+</div>

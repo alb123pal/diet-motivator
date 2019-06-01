@@ -1,0 +1,93 @@
+<div class="container">
+  <h1>Twoje dane</h1>
+  <div>
+    <span>ID: {{userData.id }}</span>
+    <span>Imie: {{userData.name }}</span>
+    <span>Nazwisko: {{ userData.surname}}</span>
+<div class="container">
+  <div class="user-top-info">
+    <img class="user-top-info__icon" src="../assets/images/user-icon.svg">
+    <p class="user-top-info__name">{{userData.name }} {{ userData.surname}}</p>
+  </div>
+  <div *ngIf="!editableData">
+    <div class="user-info">
+      <div class="user-info__item">
+        <img class="user-info__icon" src="../assets/images/diet-icon.svg">
+        <div class="user-info__text-block">
+          <h2>Wybrana dieta</h2>
+           <p class="user-info__text">{{userData.currentDiet}}</p>
+        </div>
+      </div>
+      <div class="user-info__item">
+        <img class="user-info__icon" src="../assets/images/weight-icon.svg">
+        <div class="user-info__text-block">
+          <h2>Aktualna waga</h2>
+          <p class="user-info__text">{{userData.weight}} kg</p>
+        </div>
+      </div>
+      <div class="user-info__item">
+        <img class="user-info__icon" src="../assets/images/height-icon.svg">
+        <div class="user-info__text-block">
+          <h2>Wzrost</h2>
+          <p class="user-info__text">{{userData.height}} cm</p>
+        </div>
+      </div>
+      <div class="user-info__item">
+        <img class="user-info__icon" src="../assets/images/age-icon.svg">
+        <div class="user-info__text-block">
+          <h2>Wiek</h2>
+          <p class="user-info__text">{{userData.age}}</p>
+        </div>
+      </div>
+      <div class="user-info__item">
+        <img class="user-info__icon" src="../assets/images/gender-icon.svg">
+         <div class="user-info__text-block">
+          <h2>Płeć</h2>
+          <p class="user-info__text">{{userData.gender }}</p>
+        </div>
+      </div>
+      <div class="user-info__item">
+        <img class="user-info__icon" src="../assets/images/bmi-icon.svg">
+          <div class="user-info__text-block">
+          <h2>Twój wskaźnik BMI</h2>
+          <p class="user-info__text">{{userData.BMI}}</p>
+        </div>
+      </div>
+      <div class="user-info__item">
+        <img class="user-info__icon" src="../assets/images/bilans-icon.svg">
+          <div class="user-info__text-block">
+          <h2>Aktualny bilans kaloryczny</h2>
+          <p class="user-info__text">{{userData.demandKcal}}</p>
+        </div>
+      </div>
+
+      <button class="btn btn--yellow" (click)="editData()">Edytuj dane</button>
+    </div>
+
+  </div>
+  <div *ngIf="editableData">
+    <div>
+        <span>Aktualna dieta(to powinien byc dropdown):</span>
+        <input [(ngModel)]="userData.currentDiet" placeholder="Podaj swój cel"/>
+    </div>
+    <div>
+        <span>Waga</span>
+        <input type="number" [(ngModel)]="userData.weight" placeholder="Podaj swoją wagę (kg) np. 80"/>
+    </div>
+    <div>
+        <span>Wzrost</span>
+        <input type="number" [(ngModel)]="userData.height" placeholder="Podaj wzrost (m) np. 1.80"/>
+    </div>
+    <div>
+        <span>Wiek</span>
+        <input type="number" [(ngModel)]="userData.age" placeholder="Podaj wiek"/>
+    </div>
+    <div>
+        <span>Płeć</span>
+        <span>Mężczyzna:</span><input [(ngModel)]="userData.gender" type="radio" name="gender" value="M">
+        <span>Kobieta:</span><input [(ngModel)]="userData.gender" type="radio" name="gender" value="K">
+    </div>  
+    <button (click)="editData()">Wróć do danych</button>
+    <button (click)="saveData()">Zapisz dane</button>
+  </div>
+</div>

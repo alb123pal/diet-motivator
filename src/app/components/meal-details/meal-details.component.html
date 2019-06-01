@@ -1,0 +1,19 @@
+<div>
+  <div>
+    <img src={{uMeal[0].imageUrl}} alt={{uMeal[0].name}}>
+  </div>
+  <div>
+    <h1>{{ uMeal[0].name }}</h1>
+    <hr>
+    <p><strong>Kalorie: </strong>{{ uMeal[0].calories }}</p>
+    <p><strong>Białka: </strong>{{ uMeal[0].protein }}</p>
+    <p><strong>Węglowodany: </strong>{{ uMeal[0].carbo }}</p>
+    <p><strong>tłuszcze: </strong>{{ uMeal[0].fat }}</p>
+    <hr>
+    <p><strong>Składniki:</strong></p>
+    <ul>
+      <li *ngFor="let ing of uMeal[0].ingredients">{{ ing }}</li>
+    </ul>
+    <p><strong>Przepis: </strong><br>{{ uMeal[0].recipe }}</p>
+  </div>
+</div>
