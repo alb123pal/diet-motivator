@@ -5,7 +5,7 @@
             <div class="row">
                 <span>{{userMeal.name}}</span>
                 <span>{{userMeal.calories}}</span>
-                <img src={{userMeal.imageUrl}} />
+                <img (click)="showMealDetails(userMeal.id)" src={{userMeal.imageUrl}} />
                 
             </div>
         </div>

@@ -27,6 +27,7 @@ import { AngularFireDatabaseModule } from '@angular/fire/database';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { AngularFireStorageModule } from '@angular/fire/storage';
 import { environment } from '../environments/environment';
+import { MealDetailsComponent } from './components/meal-details/meal-details.component';
 
 @NgModule({
   declarations: [
@@ -43,6 +44,7 @@ import { environment } from '../environments/environment';
     UserDetailsComponent,
     DetailsDietComponent,
     AddMealComponent,
+    MealDetailsComponent,
   ],
   imports: [
     BrowserModule,
