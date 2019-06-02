@@ -8,6 +8,20 @@
   }
 }
 
+.notification-error {
+  position: fixed;
+  background-color: red;
+  height: 75px;
+  width: 100%;
+  z-index: 250;
+  top: 0;
+  h1 {
+    color:white;
+    text-align: center;
+    font-size: 14px;
+    margin-top: 25px;
+  }
+}
 .login-page {
   background-color: #43731d;
   height: 100vh;

@@ -14,6 +14,8 @@ export class AuthorizeUserService /*implements CanActivate*/ {
 
     isAuthorize$ = this.authorizationSource.asObservable();
     userData: UserInfo;
+    isFailedLogin = null;
+
     uid = this.afAuth.authState.pipe(
         map(authState => {
             if (!authState) {
@@ -32,8 +34,7 @@ export class AuthorizeUserService /*implements CanActivate*/ {
             .then((result) => {
                 this.navigateLoggedUser();
             })
-            .catch(function (error) {
-                var errorCode = error.code;
+            .catch((error) => {
                 var errorMessage = error.message;
             });
     }
@@ -41,10 +42,11 @@ export class AuthorizeUserService /*implements CanActivate*/ {
     loginWithEmail(loginCredentials) {
         return this.afAuth.auth.signInWithEmailAndPassword(loginCredentials.login, loginCredentials.password)
         .then((result) => {
+            this.isFailedLogin = false;
             this.navigateLoggedUser('main');
         })
-        .catch(function (error) {
-            alert('podano błędne dane');
+        .catch((error) => {
+            this.isFailedLogin = true;
         });
     }
 
@@ -99,7 +101,7 @@ export class AuthorizeUserService /*implements CanActivate*/ {
                 this.authorizationSource.next(true);
                 this._router.navigate([route]);
             }
-        })
+        });
     }
 
 

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, HostBinding, OnInit, ChangeDetectorRef } from '@angular/core';
 
 import { Platform } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
@@ -23,7 +23,8 @@ export class AppComponent implements OnInit {
     private statusBar: StatusBar,
     public userService: AuthorizeUserService,
     private messagingService: MessagingService,
-    private af: AngularFirestore
+    private af: AngularFirestore,
+    private changeDetectorRef: ChangeDetectorRef
   ) {
     this.initializeApp();
   }
