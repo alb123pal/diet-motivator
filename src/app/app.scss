@@ -1,13 +1,28 @@
 
 @import url('https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900&display=swap&subset=latin-ext');
-
+app-root {
+  display: grid;
+  grid-template-rows: 75px 0 1fr;
+}
 $white: #fff;
 $black: #000;
 $body-bg: #fff;
 
 $main-text-color: #666;
 
-
+.push-notification {
+  position: fixed;
+  background-color: red;
+  height: 75px;
+  width: 100%;
+  z-index: 150;
+  p {
+    color:white;
+    text-align: center;
+    font-size: 14px;
+    margin-top: 15px;
+  }
+}
 /** DECORATIONS **/
 $transition-base: all .25s ease-in-out;
 
@@ -89,7 +104,7 @@ html {
   margin-left: auto;
   max-width: 576px;
   min-height: 100vh;
-  height: 100%;
+  height: auto;
 }
 
 *,
