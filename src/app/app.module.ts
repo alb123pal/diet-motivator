@@ -1,10 +1,19 @@
-import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
+import { RouteReuseStrategy } from '@angular/router';
 import { ReactiveFormsModule, FormsModule} from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 
-import { AppRoutingModule } from './app-routing.module';
+import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
+import { SplashScreen } from '@ionic-native/splash-screen/ngx';
+import { StatusBar } from '@ionic-native/status-bar/ngx';
+
 import { AppComponent } from './app.component';
+import { AppRoutingModule } from './app-routing.module';
+import { SMS } from '@ionic-native/sms/ngx';
+import { AndroidPermissions } from '@ionic-native/android-permissions/ngx';
+
+// from angular
 import { LoginComponent } from './components/login/login.component';
 import { MainComponent } from './components/main/main.component';
 import { ArrangeDietComponent } from './components/arrange-diet/arrange-diet.component';
@@ -29,44 +38,53 @@ import { AngularFireStorageModule } from '@angular/fire/storage';
 import { environment } from '../environments/environment';
 import { MealDetailsComponent } from './components/meal-details/meal-details.component';
 
+
+
+// @ts-ignore
 @NgModule({
   declarations: [
-    AppComponent,
-    LoginComponent,
-    MainComponent,
-    ArrangeDietComponent,
-    RecommendedDietComponent,
-    ProductsListComponent,
-    DropdownNavigatorComponent,
-    CalculatorBmiComponent,
-    UserMealsComponent,
-    RegisterUserComponent,
-    UserDetailsComponent,
-    DetailsDietComponent,
-    AddMealComponent,
-    MealDetailsComponent,
+      AppComponent,
+      LoginComponent,
+      MainComponent,
+      ArrangeDietComponent,
+      RecommendedDietComponent,
+      ProductsListComponent,
+      DropdownNavigatorComponent,
+      CalculatorBmiComponent,
+      UserMealsComponent,
+      RegisterUserComponent,
+      UserDetailsComponent,
+      DetailsDietComponent,
+      AddMealComponent,
+      MealDetailsComponent,
   ],
+  entryComponents: [],
   imports: [
     BrowserModule,
+    IonicModule.forRoot(),
     AppRoutingModule,
     HttpClientModule,
     ReactiveFormsModule,
     FormsModule,
 
     AngularFireModule.initializeApp(
-      environment.firebase
+        environment.firebase
     ),
     AngularFireAuthModule,
     AngularFireDatabaseModule
   ],
   providers: [
-
-      AuthorizeUserService,
-      AngularFireAuthModule,
-      CustomValidators,
-      AngularFirestore,
-      AngularFireStorageModule
+    StatusBar,
+    SplashScreen,
+    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
+    SMS,
+    AndroidPermissions,
+    AuthorizeUserService,
+    AngularFireAuthModule,
+    CustomValidators,
+    AngularFirestore,
+    AngularFireStorageModule
   ],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {}

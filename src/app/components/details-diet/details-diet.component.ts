@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute} from '@angular/router';
-import { HttpClient } from '@angular/common/http';
 import { Diet } from '../../models/diet.model';
 import { DietService } from '../../services/diet.service';
+import { AngularFireAuth } from '@angular/fire/auth';
+import { Router} from '@angular/router';
 
 @Component({
   selector: 'app-details-diet',
@@ -13,10 +14,18 @@ import { DietService } from '../../services/diet.service';
 export class DetailsDietComponent implements OnInit {
   dietName: string;
   selectedDiet: Diet[];
+  usersId: string;
 
-  constructor(private _activatedRoute: ActivatedRoute, private dietService: DietService) { }
+  constructor(private _activatedRoute: ActivatedRoute, 
+              private dietService: DietService, 
+              private afa: AngularFireAuth,
+              private _router: Router) { }
 
   ngOnInit() {
+    this.afa.user.subscribe(data => {
+      this.usersId = data.uid;
+    })
+
     this._activatedRoute.paramMap.subscribe(dietName => {
       this.dietName = dietName['params'].dietName;
     });
@@ -30,6 +39,12 @@ export class DetailsDietComponent implements OnInit {
         } as Diet;
       })
     })
+  }
+
+  removeDiet(diet: string) {
+    console.log(diet);
+    this.dietService.deleteDiet(diet);
+    this._router.navigate(['rekomendowane-diety']);
   }
 
 }

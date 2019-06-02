@@ -1,7 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute} from '@angular/router';
 import { UserMeal } from '../../models/user-meal.model';
+import { UserMealsService } from '../../services/user-meals.service';
 import { AngularFirestore } from '@angular/fire/firestore';
+import { AngularFireAuth } from '@angular/fire/auth';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-meal-details',
@@ -11,8 +14,17 @@ import { AngularFirestore } from '@angular/fire/firestore';
 export class MealDetailsComponent implements OnInit {
   selectedMeal: UserMeal;
   uMeal: UserMeal[];
+  usersId: string;
 
-  constructor(private _activatedRoute: ActivatedRoute, private af: AngularFirestore) { }
+  constructor(private _activatedRoute: ActivatedRoute, 
+              private af: AngularFirestore, 
+              private afa: AngularFireAuth,
+              private umService: UserMealsService,
+              private _router: Router) { 
+    this.afa.user.subscribe(data => {
+      this.usersId = data.uid;
+    })
+  }
 
   ngOnInit() {
     this._activatedRoute.paramMap.subscribe(meal => {
@@ -28,5 +40,10 @@ export class MealDetailsComponent implements OnInit {
         } as UserMeal;
       })
     })
+  }
+
+  removeUserMeal(meal: string) {
+    this.umService.deleteUserMeal(meal);
+    this._router.navigate(['posilki']);
   }
 }

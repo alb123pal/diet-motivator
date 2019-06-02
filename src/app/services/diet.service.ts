@@ -24,7 +24,9 @@ export class DietService {
   }
 
   deleteDiet(dietId: string) {
-    this.firestore.doc('diets/' + dietId).delete();
+    this.firestore.collection('diets', ref => ref.where('id', '==', dietId)).snapshotChanges().subscribe(e => {
+      this.firestore.collection("diets").doc(e[0].payload.doc.id).delete();
+    })
   }
 
   getDatabase() {

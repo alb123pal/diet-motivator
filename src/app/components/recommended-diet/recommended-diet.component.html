@@ -48,8 +48,12 @@
 			<label for="calories">Wybierz kaloryczność diety: </label>
 			<select (change)="chooseDietRange($event)" name="calories" id="calories">
 				<option value="Wszystko">Wszystko</option>
+				<option value="Uzytkownika">Uzytkownika</option>
+				<option *ngFor="let range of rangeDietKcal" value={{range}}>{{range}} kcal</option>
+				<!-- <option value="1000">1000 kcal</option>
 				<option value="1500">1500 kcal</option>
 				<option value="2000">2000 kcal</option>
+				<option value="3200">3200 kcal</option> -->
 			</select>
 		</div>
 		

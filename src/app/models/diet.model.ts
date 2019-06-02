@@ -5,4 +5,5 @@ export class Diet {
     name: string;
     calories: number;
     meals: Meal[];
+    userId: string;
 }

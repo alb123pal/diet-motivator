@@ -14,9 +14,10 @@
 <div class="diet-container" *ngFor="let diet of selectedDiet">
   <div class="main-diet">
     <div class="diet-info">
-      <img class="diet-info__icon" src="../assets/images/user-icon.svg">
-      <p class="diet-info__name">{{ diet.name }}</p>
-      <p class="subheader">Liczba kalorii: {{ diet.calories }} </p>
+        <img class="diet-info__icon" src="../assets/images/user-icon.svg">
+        <p class="diet-info__name">{{ diet.name }}</p>
+        <p class="subheader">Liczba kalorii: {{ diet.calories }} </p>
+      <button *ngIf="diet.userId === usersId" (click)="removeDiet(diet.id)">Usuń dietę</button>
     </div>
     <div class="details-diet">
     <div class="diet-content-single">

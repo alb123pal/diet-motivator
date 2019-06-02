@@ -2,13 +2,13 @@
 <div class="nav-wrapper">
   <nav class="navigation">
     <ul class="nav-items">
-        <li><a routerLink='main'>Strona główna</a></li>
-        <li><a routerLink='ustawienia-konta'>Dane użytkownika</a></li>
-        <li> <a routerLink='stworz-diete'>Ułóż swoją diete</a></li>
-        <li> <a routerLink='lista-produktow'>Sprawdż kaloryczność produktów</a></li>
-        <li><a routerLink='rekomendowane-diety'>Rekomendowane diety</a></li>
-        <li><a routerLink='posilki'>Zdrowe posiłki</a></li>
-        <li><a routerLink='kalkulator-bmi'>Sprawdż swoje BMI</a></li>
+        <li><a (click)="navigateTo('main')">Strona główna</a></li>
+        <li><a (click)="navigateTo('ustawienia-konta')">Dane użytkownika</a></li>
+        <li><a (click)="navigateTo('stworz-diete')">Ułóż swoją diete</a></li>
+        <li><a (click)="navigateTo('rekomendowane-diety')">Sprawdż kaloryczność produktów</a></li>
+        <li><a (click)="navigateTo('lista-produktow')">Rekomendowane diety</a></li>
+        <li><a (click)="navigateTo('posilki')">Zdrowe posiłki</a></li>
+        <li><a (click)="navigateTo('kalkulator-bmi')">Sprawdż swoje BMI</a></li>
     </ul>
       <div class="nav-toogler"></div>
   </nav>
@@ -23,4 +23,3 @@
   <img class="nav-wrap__logo" src="../assets/images/logo.svg">
 </div>
 </div>
-
