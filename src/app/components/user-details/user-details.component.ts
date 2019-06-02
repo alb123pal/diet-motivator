@@ -24,6 +24,8 @@ export class UserDetailsComponent implements OnInit {
     currentDiet: '',
     demandKcal: 0,
     BMI: 0,
+    userToken: '',
+    friendNumber: ''
   }
 
   editableData = false;
@@ -48,6 +50,8 @@ export class UserDetailsComponent implements OnInit {
             BMI: data[0].payload.doc.get('BMI'),
             currentDiet: data[0].payload.doc.get('currentDiet'),
             demandKcal:  data[0].payload.doc.get('demandKcal'),
+            userToken: data[0].payload.doc.get('userToken'),
+            friendNumber: data[0].payload.doc.get('friendNumber'),
           }
         }
       });

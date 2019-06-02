@@ -65,6 +65,18 @@
         <input [(ngModel)]="userData.currentDiet" placeholder="Podaj swój cel"/>
     </div>
     <div>
+      <span>Imie</span>
+      <input type="text" [(ngModel)]="userData.name" placeholder="Imię"/>
+    </div>
+    <div>
+      <span>Nazwisko</span>
+      <input type="text" [(ngModel)]="userData.surname" placeholder="Nazwisko"/>
+    </div>
+    <div>
+      <span>Numer telefonu przyjaciela</span>
+      <input type="text" [(ngModel)]="userData.friendNumber" placeholder="Numer telefonu przyjaciela"/>
+    </div>
+    <div>
         <span>Waga</span>
         <input type="number" [(ngModel)]="userData.weight" placeholder="Podaj swoją wagę (kg) np. 80"/>
     </div>

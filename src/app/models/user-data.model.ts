@@ -9,4 +9,6 @@ export class UserInfo {
     BMI: number;
     currentDiet: string;
     demandKcal: number;
+    userToken: string;
+    friendNumber: string;
 }

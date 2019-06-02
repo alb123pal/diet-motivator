@@ -35,6 +35,8 @@ export class CalculatorBmiComponent implements OnInit {
     currentDiet: '',
     demandKcal: 0,
     BMI: 0,
+    userToken: '',
+    friendNumber: ''
   }
 
   updateUserData() {
@@ -51,9 +53,11 @@ export class CalculatorBmiComponent implements OnInit {
             weight: e[0].payload.doc.get('weight'),
             height: e[0].payload.doc.get('height'),
             age: e[0].payload.doc.get('age'),
-            BMI: this.BMI,
+            BMI: e[0].payload.doc.get('BMI'),
             currentDiet: e[0].payload.doc.get('currentDiet'),
             demandKcal:  this.kcalDemand,
+            userToken: e[0].payload.doc.get('userToken'),
+            friendNumber: e[0].payload.doc.get('friendNumber'),
           }
           console.log(this.userData);
           this.db.collection("users").doc(e[0].payload.doc.id).set(this.userData, {merge: true})

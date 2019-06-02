@@ -38,6 +38,10 @@ import { AngularFireStorageModule } from '@angular/fire/storage';
 import { environment } from '../environments/environment';
 import { MealDetailsComponent } from './components/meal-details/meal-details.component';
 
+import { MessagingService } from './services/messaging.service';
+import { AngularFireMessagingModule } from '@angular/fire/messaging';
+import { AsyncPipe } from '../../node_modules/@angular/common';
+
 
 
 // @ts-ignore
@@ -71,7 +75,8 @@ import { MealDetailsComponent } from './components/meal-details/meal-details.com
         environment.firebase
     ),
     AngularFireAuthModule,
-    AngularFireDatabaseModule
+    AngularFireDatabaseModule,
+    AngularFireMessagingModule
   ],
   providers: [
     StatusBar,
@@ -83,7 +88,9 @@ import { MealDetailsComponent } from './components/meal-details/meal-details.com
     AngularFireAuthModule,
     CustomValidators,
     AngularFirestore,
-    AngularFireStorageModule
+    AngularFireStorageModule,
+    MessagingService,
+    AsyncPipe
   ],
   bootstrap: [AppComponent]
 })
