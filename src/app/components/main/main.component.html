@@ -36,14 +36,28 @@
 		</div>
       <app-add-meal [isRegister]="true" (addedMeal)="addMealToDailyKcal($event)"></app-add-meal>
       <h1>Wprowadzone posiłki</h1>
-        <div *ngFor="let meal of dailyMeals">
-          <span>Nazwa: {{ meal.name}}</span>
-          <span>Kcal: {{ meal.kcal}}</span>
-          <span>Bialko: {{ meal.protein}}</span>
-          <span>weglowodany: {{ meal.carbo}}</span>
-          <span>Tluszcz: {{ meal.fat}}</span>
-      </div>
-	
+			<div class="meal-item" *ngFor="let meal of dailyMeals">
+				<div class="meal-item__group">
+					<p class="meal-item__header">Nazwa posiłku:</p>
+					<p class="meal-item__text">{{meal.name}}</p>
+				</div>
+				<div class="meal-item__group">
+					<p class="meal-item__header">Liczba kalorii:</p>
+					<p class="meal-item__text">{{meal.kcal}}</p>
+				</div>
+				<div class="meal-item__group">
+					<p class="meal-item__header">Białko:</p>
+					<p class="meal-item__text">{{meal.protein}}</p>
+				</div>
+				<div class="meal-item__group">
+					<p class="meal-item__header">Węglowodany:</p>
+					<p class="meal-item__text">{{meal.carbo}}</p>
+				</div>
+				<div class="meal-item__group">
+					<p class="meal-item__header">Tłuszcz:</p>
+					<p class="meal-item__text">{{meal.fat}}</p>
+				</div>
+			</div>
 	</div>
 </div>
 

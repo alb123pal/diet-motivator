@@ -1,5 +1,4 @@
-<div class="container">
-  <div class="add-meal">
+<div class="add-meal">
 	<h1>Dodaj posilek</h1>
 		<input class="standard-input" [(ngModel)]="newMeal.name" type="text" placeholder="Nazwa posiłku"/>
 		<input class="standard-input" [(ngModel)]="newMeal.calories" type="text" placeholder="Kcal"/>
@@ -17,5 +16,5 @@
     <input class="standard-input" type="file" (change)="upload($event)" />
   </div>
   <button class="btn btn--yellow" [disabled]="!isRegister && !imageUploaded" (click)="saveMeal()">Dodaj posiłek</button>
-  </div>
 </div>
+
