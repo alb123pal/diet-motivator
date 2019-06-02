@@ -59,44 +59,49 @@
     </div>
 
   </div>
-  <div *ngIf="editableData">
+  <div class="editable-data" *ngIf="editableData">
     <div>
-        <span>Aktualna dieta(to powinien byc dropdown):</span>
-        <input [(ngModel)]="userData.currentDiet" placeholder="Podaj swój cel"/>
+        <span class="standard-input-label">Aktualna dieta(to powinien byc dropdown):</span>
+        <input class="standard-input" [(ngModel)]="userData.currentDiet" placeholder="Podaj swój cel"/>
     </div>
     <div>
-      <span>Imie</span>
-      <input type="text" [(ngModel)]="userData.name" placeholder="Imię"/>
+      <span class="standard-input-label">Imie</span>
+      <input class="standard-input" type="text" [(ngModel)]="userData.name" placeholder="Imię"/>
     </div>
     <div>
-      <span>Nazwisko</span>
-      <input type="text" [(ngModel)]="userData.surname" placeholder="Nazwisko"/>
+      <span class="standard-input-label">Nazwisko</span>
+      <input class="standard-input" type="text" [(ngModel)]="userData.surname" placeholder="Nazwisko"/>
     </div>
     <div>
-      <span>Numer telefonu przyjaciela</span>
-      <input type="text" [(ngModel)]="userData.friendNumber" placeholder="Numer telefonu przyjaciela"/>
+      <span class="standard-input-label">Numer telefonu przyjaciela</span>
+      <input class="standard-input" type="text" [(ngModel)]="userData.friendNumber" placeholder="Numer telefonu przyjaciela"/>
     </div>
     <div>
-        <span>Waga</span>
-        <input type="number" [(ngModel)]="userData.weight" placeholder="Podaj swoją wagę (kg) np. 80"/>
+        <span class="standard-input-label">Waga</span>
+        <input class="standard-input" type="number" [(ngModel)]="userData.weight" placeholder="Podaj swoją wagę (kg) np. 80"/>
     </div>
     <div>
-        <span>Wzrost</span>
-        <input type="number" [(ngModel)]="userData.height" placeholder="Podaj wzrost (m) np. 1.80"/>
+        <span class="standard-input-label">Wzrost</span>
+        <input class="standard-input" type="number" [(ngModel)]="userData.height" placeholder="Podaj wzrost (m) np. 1.80"/>
     </div>
     <div>
-        <span>Wiek</span>
-        <input type="number" [(ngModel)]="userData.age" placeholder="Podaj wiek"/>
+        <span class="standard-input-label">Wiek</span>
+        <input class="standard-input" type="number" [(ngModel)]="userData.age" placeholder="Podaj wiek"/>
     </div>
-    <div>
-        <span>Płeć</span>
-        <span>Mężczyzna:</span><input [(ngModel)]="userData.gender" type="radio" name="gender" value="M">
-        <span>Kobieta:</span><input [(ngModel)]="userData.gender" type="radio" name="gender" value="K">
-    </div>  
-    <button (click)="editData()">Wróć do danych</button>
-    <button (click)="saveData()">Zapisz dane</button>
-    <div class="notification" [hidden]="!isSavedData">
-      <p>Dane zostały zapisane</p>
+    <div class="calc-radio-item">
+      <div class="calc-radio-item__group">
+        <input [(ngModel)]="userData.gender" type="radio" name="gender" value="M">
+        <label for="men">Mężczyzna</label>
+      </div>
+      <div class="calc-radio-item__group">
+        <input [(ngModel)]="userData.gender" type="radio" name="gender" value="K">
+        <label for="women">Kobieta</label>
+      </div>
     </div>
+    <button class="btn btn--yellow" (click)="editData()">Wróć do danych</button>
+    <button class="btn btn--yellow" (click)="saveData()">Zapisz dane</button>
+      <div class="notification" [hidden]="!isSavedData">
+          <p>Dane zostały zapisane</p>
+      </div>
   </div>
 </div>

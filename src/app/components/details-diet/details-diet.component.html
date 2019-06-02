@@ -14,28 +14,36 @@
 <div class="diet-container" *ngFor="let diet of selectedDiet">
   <div class="main-diet">
     <div class="diet-info">
-        <img class="diet-info__icon" src="../assets/images/user-icon.svg">
-        <p class="diet-info__name">{{ diet.name }}</p>
-        <p class="subheader">Liczba kalorii: {{ diet.calories }} </p>
-      <button *ngIf="diet.userId === usersId" (click)="removeDiet(diet.id)">Usuń dietę</button>
+        <!-- <img class="diet-info__icon" src="../assets/images/user-icon.svg"> -->
+      <p class="diet-info__name">{{ diet.name }}</p>
+      <p class="subheader">Liczba kalorii: {{ diet.calories }} </p>
+      <button class="btn btn--yellow" *ngIf="diet.userId === usersId" (click)="removeDiet(diet.id)">Usuń dietę</button>
     </div>
     <div class="details-diet">
     <div class="diet-content-single">
       <div class="diet-content" *ngFor="let meal of diet.meals">
-        <div class="meal-container">
-          <h3>{{ meal.type }}</h3>
-          <hr>
-          <p><strong>{{ meal.name }}</strong></p>
-          <p><strong>Kalorie:</strong> {{ meal.calories }}</p>
-          <p><strong>Lista składników:</strong></p>
-          <ul>
-            <li *ngFor="let ing of meal.ingredients">
-              {{ ing }}
-            </li>
-          </ul>
-          <p><strong>Sposób przygotowania:</strong></p>
-          <p>{{ meal.recipe }}</p>
-        </div>
+        <div class="meal-item">
+            <div class="meal-item__group">
+              <p class="meal-item__header">Typ posiłku:</p>
+              <p class="meal-item__text">{{ meal.type }}</p>
+            </div>
+            <div class="meal-item__group">
+              <p class="meal-item__header">Nazwa posiłku:</p>
+              <p class="meal-item__text">{{ meal.name }}</p>
+            </div>
+            <div class="meal-item__group">
+              <p class="meal-item__header">Liasta składników:</p>
+              <p class="meal-item__text" *ngFor="let ing of meal.ingredients">{{ ing }}</p>
+            </div>
+            <div class="meal-item__group">
+              <p class="meal-item__header">Składniki:</p><br>
+              <p class="meal-item__text"  *ngFor="let ing of meal.ingredients">{{ing}}</p>
+            </div>
+            <div class="meal-item__group">
+              <p class="meal-item__header">Sposób przygotowania:</p>
+              <p class="meal-item__text">{{meal.recipe}}</p>
+            </div>
+          </div>
       </div>
     </div>
     </div>
