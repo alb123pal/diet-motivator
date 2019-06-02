@@ -12,6 +12,7 @@ import { UserInfo } from '../../models/user-data.model';
 })
 export class MainComponent implements OnInit {
   user;
+  user_two: UserInfo[];
   userData: UserInfo;
   addedMeals = [];
   dailyMeals: [];
@@ -25,6 +26,17 @@ export class MainComponent implements OnInit {
   ngOnInit() {
     this.dailyMeals = JSON.parse(window.localStorage.getItem('meals')) || [];
     console.log(this.dailyMeals);
+    this.afa.user.subscribe(data => {
+      this.af.collection('users', ref => ref.where('id', '==', data.uid)).snapshotChanges().subscribe(e => {
+        this.user_two = e.map(ele => {
+          return {
+            id: ele.payload.doc.id,
+            ...ele.payload.doc.data()
+          } as UserInfo;
+        })
+      })
+    })
+    
     this.user = {
       weight: 80,
       height: 182,
