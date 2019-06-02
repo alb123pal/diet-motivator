@@ -1,5 +1,5 @@
-<app-dropdown-navigator [hidden]="!isLogged && false" *ngIf="userService.uid | async as uid; else login"></app-dropdown-navigator>
-<div class="main-title" [hidden]="isLogged || true">
+<app-dropdown-navigator [hidden]="!isLogged" *ngIf="userService.uid | async as uid; else login"></app-dropdown-navigator>
+<div class="main-title" [hidden]="isLogged ">
   <h1>Motywator dietetyczny</h1>
 </div>
 <router-outlet></router-outlet>
