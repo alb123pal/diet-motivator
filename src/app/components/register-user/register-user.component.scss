@@ -1,3 +1,31 @@
-.form-control {
-    display: block;
+.register-user {
+    background-color: #43731d;
+    padding: 20px;
 }
+
+.form-input {
+    border-width: 0 0 1px 0;
+    border-color: #fff;
+    background: transparent;
+    color: #fff;
+    font-size: 1.4rem;
+    font-weight: 300;
+    width: 100%;
+    padding: 5px 10px;
+    margin: 20px 0;
+    &::placeholder {
+      color: #fff;
+      font-size: 1.4rem;
+      font-weight: 300;
+    }
+  }
+  
+  
+  
+  .form-group {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+  }
+  
