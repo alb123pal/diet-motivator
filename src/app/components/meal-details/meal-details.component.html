@@ -1,22 +1,38 @@
-<div>
-  <div>
-    <img src={{uMeal[0].imageUrl}} alt={{uMeal[0].name}}>
+<div class="container">
+  <img class="single-meal-image" src={{uMeal[0].imageUrl}} alt={{uMeal[0].name}}>
+  <div class="meal-details">
+    <div class="meal-item">
+      <h1>{{ uMeal[0].name }}</h1>
+      <div class="meal-item__group">
+        <p class="meal-item__header">Nazwa posiłku:</p>
+        <p class="meal-item__text">{{ uMeal[0].name }}</p>
+      </div>
+      <div class="meal-item__group">
+        <p class="meal-item__header">Liczba kalorii:</p>
+        <p class="meal-item__text">{{ uMeal[0].calories }}</p>
+      </div>
+      <div class="meal-item__group">
+        <p class="meal-item__header">Ilość białka:</p>
+        <p class="meal-item__text">{{ uMeal[0].protein }}</p>
+      </div>
+      <div class="meal-item__group">
+        <p class="meal-item__header">Ilość węglowodanów:</p>
+        <p class="meal-item__text">{{ uMeal[0].carbo }}</p>
+      </div>
+      <div class="meal-item__group">
+        <p class="meal-item__header">Ilość tłuszczy:</p>
+        <p class="meal-item__text">{{ uMeal[0].fat }}</p>
+      </div>
+      <!-- <div class="meal-item__group">
+        <p class="meal-item__header">Składniki:</p>
+        <p class="meal-item__text" *ngFor="let ing of uMeal[0].ingredients">{{ ing }}</p>
+      </div> -->
+      <div class="meal-item__group">
+        <p class="meal-item__header">Przepis:</p>
+        <p class="meal-item__text" *ngFor="let ing of uMeal[0].ingredients">{{ uMeal[0].recipe }}</p>
+      </div>
+    </div>
   </div>
-  <div>
-    <h1>{{ uMeal[0].name }}</h1>
-    <hr>
-    <p><strong>Kalorie: </strong>{{ uMeal[0].calories }}</p>
-    <p><strong>Białka: </strong>{{ uMeal[0].protein }}</p>
-    <p><strong>Węglowodany: </strong>{{ uMeal[0].carbo }}</p>
-    <p><strong>tłuszcze: </strong>{{ uMeal[0].fat }}</p>
-    <hr>
-    <p><strong>Składniki:</strong></p>
-    <ul>
-      <li *ngFor="let ing of uMeal[0].ingredients">{{ ing }}</li>
-    </ul>
-    <p><strong>Przepis: </strong><br>{{ uMeal[0].recipe }}</p>
-  </div>
-  <div>
-    <button *ngIf="uMeal[0].userId === usersId" (click)="removeUserMeal(uMeal[0].id)">Usuń posiłek</button>
-  </div>
+  <button *ngIf="uMeal[0].userId === usersId" (click)="removeUserMeal(uMeal[0].id)">Usuń posiłek</button>
 </div>
+
