@@ -9,7 +9,7 @@ import { AuthorizeUserService } from '../../services/autorize-user.service';
 })
 export class DropdownNavigatorComponent implements OnInit {
   isOpen = false;
-  constructor(private _router: Router, public userService: AuthorizeUserService,) { }
+  constructor(private _router: Router, public userService: AuthorizeUserService) { }
 
   ngOnInit() {
   }

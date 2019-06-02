@@ -14,6 +14,7 @@ export class ArrangeDietComponent implements OnInit {
   mealIngredients: string;
   isAddingMeal = false;
   usersId: string;
+  isAddedDiet = false;
 
   constructor(private dietService: DietService, private afa: AngularFireAuth) { }
 
@@ -73,6 +74,10 @@ export class ArrangeDietComponent implements OnInit {
     this.userDiet.meals !== []) {
       this.create(this.userDiet);
     }
+    this.isAddedDiet = true;
+    setTimeout(() => {
+      this.isAddedDiet = false;
+    }, 3000);
     this.userMeals = [];
     this.userDiet = {
       id: '',

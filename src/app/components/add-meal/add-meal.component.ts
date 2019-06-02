@@ -23,13 +23,13 @@ export class AddMealComponent implements OnInit {
     userId: '',
     name: '',
     imageUrl: '',
-    calories: 0,
-    protein: 0,
-    carbo: 0,
-    fat: 0,
+    calories: undefined,
+    protein: undefined,
+    carbo: undefined,
+    fat: undefined,
     ingredients: [],
     recipe: ''
-  }
+  };
 
   constructor(private _http: HttpClient,
               private uMeal: UserMealsService,

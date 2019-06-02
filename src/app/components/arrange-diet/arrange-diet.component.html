@@ -44,3 +44,7 @@
   <button class="btn btn--yellow" (click)="addMeal()">Dodaj posiłek</button>
   <button class="btn btn--yellow" [disabled]="userMeals.length === 0" (click)="saveAllMeals()">Zapisz wszystkie posiłki</button>
 </div>
+<div class="notification" [hidden]="!isAddedDiet">
+	<h1>Dieta została dodana</h1>
+	<p>Przejdź do komponentu rekomendowane diety i wybierz: diety użytkownika</p>
+</div>

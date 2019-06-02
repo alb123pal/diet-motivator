@@ -67,3 +67,18 @@
         color: #43731d;
     }
 }
+
+.notification {
+    position: fixed;
+    background-color: blue;
+    height: 75px;
+    width: 100%;
+    z-index: 150;
+    top: 0;
+    p {
+        color:white;
+        text-align: center;
+        font-size: 14px;
+        margin-top: 25px;
+    }
+}

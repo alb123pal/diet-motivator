@@ -11,7 +11,7 @@
 	</div>
 	<div class="calc-item">
     <label class="calc-item__label">Wiek</label>
-		<input class="calc-item__input" type="number" #height placeholder="">
+		<input class="calc-item__input" type="number" #age placeholder="">
 		<span class="calc-item__suffix">lat</span>
   </div>
   <div class="calc-radio-item">
@@ -41,4 +41,7 @@
 	</div>
 </div>
 <button class="btn btn--yellow" (click)="updateUserData()">Zapisz swoje dane</button>
+</div>
+<div class="notification" [hidden]="!isUpdatedData">
+	<p>Dane zostały zapisane</p>
 </div>

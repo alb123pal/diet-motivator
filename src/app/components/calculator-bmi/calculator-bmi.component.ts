@@ -15,9 +15,10 @@ export class CalculatorBmiComponent implements OnInit {
   @ViewChild('age') age: ElementRef;
 
   gender: string;
-  BMI: number
+  BMI: number;
   indicatorBMI: string;
   kcalDemand: number;
+  isUpdatedData = false;
 
   constructor(private afAuth: AngularFireAuth, private db: AngularFirestore) { }
 
@@ -37,7 +38,7 @@ export class CalculatorBmiComponent implements OnInit {
     BMI: 0,
     userToken: '',
     friendNumber: ''
-  }
+  };
 
   updateUserData() {
     this.afAuth.authState.subscribe(data => {
@@ -53,23 +54,26 @@ export class CalculatorBmiComponent implements OnInit {
             weight: e[0].payload.doc.get('weight'),
             height: e[0].payload.doc.get('height'),
             age: e[0].payload.doc.get('age'),
-            BMI: e[0].payload.doc.get('BMI'),
+            BMI: this.BMI,
             currentDiet: e[0].payload.doc.get('currentDiet'),
             demandKcal:  this.kcalDemand,
             userToken: e[0].payload.doc.get('userToken'),
             friendNumber: e[0].payload.doc.get('friendNumber'),
-          }
+          };
           console.log(this.userData);
-          this.db.collection("users").doc(e[0].payload.doc.id).set(this.userData, {merge: true})
+          this.isUpdatedData = true;
+          setTimeout(() => {
+            this.isUpdatedData = false;
+          }, 6000);
+          this.db.collection("users").doc(e[0].payload.doc.id).set(this.userData, {merge: true});
         }
       });
-    })
+    });
   }
 
   setBMI() {
     const weightValue = this.weight.nativeElement.value;
     const heightValue = this.height.nativeElement.value;
-    
     const heightValueInCentimeter = this.convertCentimeterToMeter(heightValue);
 
     this.BMI = weightValue / (heightValueInCentimeter * heightValueInCentimeter);

@@ -23,7 +23,6 @@ export class MainComponent implements OnInit {
     totalDayKcal: 0
   };
 
-  user_two: UserInfo[];
   userData: UserInfo;
   addedMeals = [];
   dailyMeals: [];
@@ -35,18 +34,18 @@ export class MainComponent implements OnInit {
               private af: AngularFirestore ) { }
 
   ngOnInit() {
+    console.log(this.dailyRemainKcal);
     this.dailyMeals = JSON.parse(window.localStorage.getItem('meals')) || [];
-    console.log(this.dailyMeals);
     this.afa.user.subscribe(data => {
       this.af.collection('users', ref => ref.where('id', '==', data.uid)).snapshotChanges().subscribe(e => {
         this.user.friendNumber = e[0].payload.doc.get('friendNumber');
         this.user.name = e[0].payload.doc.get('name');
         this.user.surname = e[0].payload.doc.get('surname');
         this.user.weight = e[0].payload.doc.get('weight');
+        this.user.height = e[0].payload.doc.get('height');
         this.user.BMI = e[0].payload.doc.get('BMI');
         this.user.demandKcal = e[0].payload.doc.get('demandKcal');
         this.user.currentDiet = e[0].payload.doc.get('currentDiet');
-        console.log(this.user);
       });
     });
     this.countDailyKcal();
@@ -58,7 +57,7 @@ export class MainComponent implements OnInit {
     window.localStorage.setItem('meals', JSON.stringify(this.dailyMeals));
     this.dailyMeals = JSON.parse(window.localStorage.getItem('meals'));
     this.countDailyKcal();
-    if (this.dailyRemainKcal < this.user.demandKcal) {
+    if (this.dailyRemainKcal < 0) {
       alert('przekroczono limt kcal, wysyłam wiadomosc');
       this.androidPermissions.requestPermissions(
           [this.androidPermissions.PERMISSION.CAMERA, this.androidPermissions.PERMISSION.GET_ACCOUNTS]);
@@ -77,9 +76,7 @@ export class MainComponent implements OnInit {
     for (let i = 0; i < this.dailyMeals.length; i++) {
       this.dailyAteKcal += +this.dailyMeals[i]['calories'];
     }
-    this.dailyRemainKcal  = +this.user.totalDayKcal - this.dailyAteKcal;
-
-
+    this.dailyRemainKcal  = +this.user.demandKcal - this.dailyAteKcal;
   }
 
   sendMessageToFriend() {
