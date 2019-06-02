@@ -1,3 +1,48 @@
-.bold {
-    font-weight: 700;
+.user-main-item {
+    background-color: #fff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 10px;
+    border-radius: 5px;
+    margin: 5px 0;
+    &__header {
+        font-size: 1.6rem;
+        font-weight: 600;
+        color: #43731d;
+    }
+    &__text {
+        font-size: 1.6rem;
+        font-weight: 400;
+        color: #43731d;   
+    }
 }
+
+.main-comp {
+    background-color: #43731d;
+    padding: 30px 20px;
+}
+
+.meal-item {
+    background-color: #fff;
+    padding: 10px 40px;
+    margin: 30px 0;
+    &__group {
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      margin: 5px 0;
+    }
+    &__header {
+      color: #43731d;
+      font-size: 1.6rem;
+      font-weight: 600;
+      margin-right: 10px;
+      
+    }
+    &__text {
+      color: #43731d;
+      font-size: 1.6rem;
+      font-weight: 400;
+    }
+  }

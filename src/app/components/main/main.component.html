@@ -1,37 +1,63 @@
-<h1>Główny root (po zalogowaniu)</h1>  
-<div>
+<div class="container">
+	<div class="main-comp">
     <div *ngIf="!user.weight && !user.height">
         <h1>Uzupełnij swoje dane</h1>
         <p>Przejdź do komponentu dane użytkownika</p>
     </div>
     <div *ngIf="!!user.weight && !!user.height">
-        <div class="row">
-            <span>Waga: {{user.weight}} kg</span> <br />
-            <span>Wzrost: {{user.height}} cm</span>
-            <span>Twoje aktulne BMI: {{user.BMI}}</span>
-        </div>
-        <div class="row">
-        <span>Aktualnie cel:
-            <span class="bold">{{user.currentDiet}}</span>
-        </span>
-        </div>
-        <div class="row">
-            <span>Dzienny bilans kaloryczny: {{user.demandKcal}} </span>
-            <span>Posiłki: {{dailyAteKcal}} </span>
-            <span>Pozostało: {{dailyRemainKcal}} </span>
-        </div>
-        <div class="row">
-            <br /> <h1>Dziennik wprowadzonych posiłków</h1>
-            <app-add-meal [isRegister]="true" (addedMeal)="addMealToDailyKcal($event)"></app-add-meal>
-            <h1>Wprowadzone posiłki</h1>
-            <div *ngFor="let meal of dailyMeals">
-                <span>Nazwa: {{ meal.name}}</span>
-                <span>Kcal: {{ meal.kcal}}</span>
-                <span>Bialko: {{ meal.protein}}</span>
-                <span>weglowodany: {{ meal.carbo}}</span>
-                <span>Tluszcz: {{ meal.fat}}</span>
-            </div>
-        </div>
-    </div>
+			<div class="user-main-item">
+					<p class="user-main-item__header">Waga:</p>
+					<p class="user-main-item__text">{{user.weight}} kg</p>    
+			</div>
+			<div class="user-main-item">
+				<p class="user-main-item__header">Wzrost:</p>
+				<p class="user-main-item__text">{{user.height}} cm</p>    
+			</div>
+			<div class="user-main-item">
+				<p class="user-main-item__header">Twoje aktulne BMI:</p>
+				<p class="user-main-item__text">{{user.BMI}}</p>    
+			</div>
+			<div class="user-main-item">
+				<p class="user-main-item__header">Aktualnie cel:</p>
+				<p class="user-main-item__text">{{user.currentDiet}}</p>    
+			</div>
+			<div class="user-main-item">
+				<p class="user-main-item__header">Dzienny bilans kaloryczny:</p>
+				<p class="user-main-item__text">{{user.demandKcal}}</p>    
+			</div>
+			<div class="user-main-item">
+				<p class="user-main-item__header">Posiłki:</p>
+				<p class="user-main-item__text">{{dailyAteKcal}}</p>    
+			</div>
+			<div class="user-main-item">
+				<p class="user-main-item__header">Pozostało:</p>
+				<p class="user-main-item__text">{{dailyRemainKcal}}</p>    
+			</div>
+		</div>
+      <app-add-meal [isRegister]="true" (addedMeal)="addMealToDailyKcal($event)"></app-add-meal>
+      <h1>Wprowadzone posiłki</h1>
+			<div class="meal-item" *ngFor="let meal of dailyMeals">
+				<div class="meal-item__group">
+					<p class="meal-item__header">Nazwa posiłku:</p>
+					<p class="meal-item__text">{{meal.name}}</p>
+				</div>
+				<div class="meal-item__group">
+					<p class="meal-item__header">Liczba kalorii:</p>
+					<p class="meal-item__text">{{meal.kcal}}</p>
+				</div>
+				<div class="meal-item__group">
+					<p class="meal-item__header">Białko:</p>
+					<p class="meal-item__text">{{meal.protein}}</p>
+				</div>
+				<div class="meal-item__group">
+					<p class="meal-item__header">Węglowodany:</p>
+					<p class="meal-item__text">{{meal.carbo}}</p>
+				</div>
+				<div class="meal-item__group">
+					<p class="meal-item__header">Tłuszcz:</p>
+					<p class="meal-item__text">{{meal.fat}}</p>
+				</div>
+			</div>
+	</div>
 </div>
 

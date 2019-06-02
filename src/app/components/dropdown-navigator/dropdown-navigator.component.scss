@@ -4,7 +4,9 @@
   left: 0;
   width: 100%;
   z-index: 99;
+  padding: 0 20px 0 0px;
 }
+
 
 .nav-wrap {
   display: flex;
@@ -43,7 +45,7 @@ cursor: pointer;
 }
 .bars .line {
 fill: none;
-stroke: #000;
+stroke: #43731d;
 stroke-width: 4;
 stroke-linecap: square;
 transition: stroke-dasharray 400ms,  stroke-dashoffset 400ms;
@@ -65,4 +67,16 @@ stroke-dashoffset: -71px;
 }
 .bars.active .bottom {
 stroke-dashoffset: -132px;
+}
+
+
+.nav-items {
+  list-style: none;
+  & li {
+    font-size: 1.8rem;
+    font-weight: 500;
+    margin: 0;
+    padding: 20px;
+    border-bottom: 1px solid #43731d;
+  }
 }

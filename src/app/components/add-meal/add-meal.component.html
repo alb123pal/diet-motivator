@@ -1,38 +1,20 @@
-<div class="container">
-  <div class="add-meal">
-  <h1>Dodaj posilek</h1>
-  <div>
-      <span>Nazwa posiłku</span>
-      <input [(ngModel)]="newMeal.name" type="text" placeholder="Nazwa posiłku"/>
-  </div>
-  <div>
-      <span>Kcal</span>
-      <input [(ngModel)]="newMeal.calories" type="text" placeholder="Kcal"/>
-  </div>
-  <div>
-      <span>białko</span>
-      <input [(ngModel)]="newMeal.protein" type="text" placeholder="białko"/>
-  </div>
-  <div>
-      <span>wegglowodany</span>
-      <input [(ngModel)]="newMeal.carbo" type="text"placeholder="Podaj weglowodany"/>
-  </div>
-  <div>
-      <span>tluszcz</span>
-      <input [(ngModel)]="newMeal.fat" type="text" placeholder="Podaj tluszcz"/>
-  </div>
+<div class="add-meal">
+	<h1>Dodaj posilek</h1>
+		<input class="standard-input" [(ngModel)]="newMeal.name" type="text" placeholder="Nazwa posiłku"/>
+		<input class="standard-input" [(ngModel)]="newMeal.calories" type="text" placeholder="Kcal"/>
+		<input class="standard-input" [(ngModel)]="newMeal.protein" type="text" placeholder="białko"/>
+		<input class="standard-input" [(ngModel)]="newMeal.carbo" type="text"placeholder="Podaj weglowodany"/>
+		<input class="standard-input" [(ngModel)]="newMeal.fat" type="text" placeholder="Podaj tluszcz"/>
+		<div *ngIf="!isRegister">
+			<input class="standard-input" [(ngModel)]="newMeal.recipe" type="text" placeholder="Podaj przepis"/>
+		</div>
+		<div *ngIf="!isRegister">
+			<input class="standard-input" [(ngModel)]="mealIngredients" type="text" placeholder="Podaj składniki po przecinku"/>
+		</div>
   <div *ngIf="!isRegister">
-      <span>przepis</span>
-      <input [(ngModel)]="newMeal.recipe" type="text" placeholder="Podaj przepis"/>
+    <label for="file">Wybierz zdjęcie</label>
+    <input class="standard-input" type="file" (change)="upload($event)" />
   </div>
-  <div *ngIf="!isRegister">
-    <span>składniki</span>
-    <input [(ngModel)]="mealIngredients" type="text" placeholder="Podaj składniki po przecinku"/>
+  <button class="btn btn--yellow" [disabled]="!isRegister && !imageUploaded" (click)="saveMeal()">Dodaj posiłek</button>
 </div>
-  <div *ngIf="!isRegister">
-    <label for="file">File:</label>
-    <input type="file" (change)="upload($event)" />
-  </div>
-  <button [disabled]="!isRegister && !imageUploaded" (click)="saveMeal()">Dodaj posiłek</button>
-  </div>
-</div>
+
