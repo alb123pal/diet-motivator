@@ -62,7 +62,7 @@
 		<div class="row">
 			<div *ngFor="let diet of diets" class="col-6 mtb-25">
 				<button (click)="getDietDetails(diet.name)" class="diet-button">
-					{{ diet.name }}
+					<span class="diet-button__name">{{ diet.name }}</span>
 				</button>
 			</div>
 		</div>
