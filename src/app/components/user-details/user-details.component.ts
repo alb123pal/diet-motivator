@@ -10,8 +10,9 @@ import { UserDataService } from '../../services/user-data.service';
   styleUrls: ['./user-details.component.scss']
 })
 export class UserDetailsComponent implements OnInit {
-  uInfo:  UserInfo;
-  userId: string;  
+  uInfo: UserInfo;
+  userId: string;
+  isSavedData = false;
 
   userData: UserInfo = {
     id: '',
@@ -71,24 +72,11 @@ export class UserDetailsComponent implements OnInit {
         } else {
           this.db.collection("users").doc(e[0].payload.doc.id).set(this.userData, {merge: true});
         }
+        this.isSavedData = true;
+        setTimeout(() => {
+          this.isSavedData = false;
+        }, 3000);
       });
     });
   }
-
-  // getCurrentUser() {
-  //   this.afAuth.authState.subscribe((data) => {
-  //     this.userData.id = data.uid;
-  //   })
-  // }
-
-  // calculateBMI() {
-  //   let uw = this.userData.weight;
-  //   let uh = this.userData.height;
-  //   console.log(uw, uh);
-  //   if(uw === 0 || uh === 0) {
-  //     return 0;
-  //   } else {
-  //     return uw/(uh*uh);
-  //   }
-  // }
 }

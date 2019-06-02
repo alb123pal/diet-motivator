@@ -1,34 +1,36 @@
 <h1>Główny root (po zalogowaniu)</h1>  
 <div>
-    <div class="row">
-        <span>Waga: {{user.weight}} kg</span> <br /> 
-        <span>Wzrost: {{user.height}} cm</span>
-        <span>Twoje aktulne BMI: {{user.BMI}}</span>
-        <span>Jak nie ma wprowadzonych danych to napis: Podaj wage i wzrost</span>
+    <div *ngIf="!user.weight && !user.height">
+        <h1>Uzupełnij swoje dane</h1>
+        <p>Przejdź do komponentu dane użytkownika</p>
     </div>
-    <div class="row">
+    <div *ngIf="!!user.weight && !!user.height">
+        <div class="row">
+            <span>Waga: {{user.weight}} kg</span> <br />
+            <span>Wzrost: {{user.height}} cm</span>
+            <span>Twoje aktulne BMI: {{user.BMI}}</span>
+        </div>
+        <div class="row">
         <span>Aktualnie cel:
             <span class="bold">{{user.currentDiet}}</span>
         </span>
-        <span>Jeśli nie ma diety to przycisk:</span>
-        <button [routerLink]="['/stworz-diete']">Ułóż diete</button>
-    </div>
-    <div class="row">
-        <span>Punkty na niezdrowe jedzenie: 5 </span>
-        <span>Dzienny bilans kaloryczny: {{user.demandKcal}} </span>
-        <span>Posiłki: {{dailyAteKcal}} </span>
-        <span>Pozostało: {{dailyRemainKcal}} </span>
-    </div>
-    <div class="row">
-       <br /> <h1>Dziennik wprowadzonych posiłków</h1>
-        <app-add-meal [isRegister]="true" (addedMeal)="addMealToDailyKcal($event)"></app-add-meal>
-        <h1>Wprowadzone posiłki</h1>
-        <div *ngFor="let meal of dailyMeals">
-            <span>Nazwa: {{ meal.name}}</span>
-            <span>Kcal: {{ meal.kcal}}</span>
-            <span>Bialko: {{ meal.protein}}</span>
-            <span>weglowodany: {{ meal.carbo}}</span>
-            <span>Tluszcz: {{ meal.fat}}</span>
+        </div>
+        <div class="row">
+            <span>Dzienny bilans kaloryczny: {{user.demandKcal}} </span>
+            <span>Posiłki: {{dailyAteKcal}} </span>
+            <span>Pozostało: {{dailyRemainKcal}} </span>
+        </div>
+        <div class="row">
+            <br /> <h1>Dziennik wprowadzonych posiłków</h1>
+            <app-add-meal [isRegister]="true" (addedMeal)="addMealToDailyKcal($event)"></app-add-meal>
+            <h1>Wprowadzone posiłki</h1>
+            <div *ngFor="let meal of dailyMeals">
+                <span>Nazwa: {{ meal.name}}</span>
+                <span>Kcal: {{ meal.kcal}}</span>
+                <span>Bialko: {{ meal.protein}}</span>
+                <span>weglowodany: {{ meal.carbo}}</span>
+                <span>Tluszcz: {{ meal.fat}}</span>
+            </div>
         </div>
     </div>
 </div>

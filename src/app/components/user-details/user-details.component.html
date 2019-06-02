@@ -95,5 +95,8 @@
     </div>  
     <button (click)="editData()">Wróć do danych</button>
     <button (click)="saveData()">Zapisz dane</button>
+    <div class="notification" [hidden]="!isSavedData">
+      <p>Dane zostały zapisane</p>
+    </div>
   </div>
 </div>
