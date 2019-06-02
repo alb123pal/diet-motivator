@@ -17,6 +17,7 @@ export class LoginComponent implements OnInit {
   formErrors = {
     login: '',
   };
+  isError = false;
 
   constructor(public authorizeUserService: AuthorizeUserService, private _router: Router, private _fb: FormBuilder) { }
 
@@ -48,13 +49,19 @@ export class LoginComponent implements OnInit {
           }
         }
       }
-    
+
       authorizeUser(loginForm): void {
         const loginCredentials = {
           login: this.loginForm.controls.login.value,
           password: this.loginForm.controls.password.value
-        }
-        this.authorizeUserService.loginWithEmail(loginCredentials)
+        };
+        this.authorizeUserService.loginWithEmail(loginCredentials).then((data) => {
+            console.log(this.authorizeUserService);
+            if (this.authorizeUserService.isFailedLogin) {
+                this.isError = true;
+                console.log('pokazuje error');
+            }
+        });
       }
 
       loginWithGoogle() {
