@@ -26,7 +26,7 @@ export class UserDetailsComponent implements OnInit {
     BMI: 0,
     userToken: '',
     friendNumber: ''
-  }
+  };
 
   editableData = false;
   constructor(private afAuth: AngularFireAuth, private db: AngularFirestore, private uService: UserDataService) { }
@@ -36,7 +36,7 @@ export class UserDetailsComponent implements OnInit {
     this.afAuth.authState.subscribe(data => {
       console.log(data.uid);
       this.db.collection('users', ref => ref.where('id', '==', data.uid)).snapshotChanges().subscribe(data => {
-        if(data.length === 0) {
+        if (data.length === 0) {
           console.log('Dane nie istnieja');
         } else {
           this.userData = {
@@ -52,7 +52,7 @@ export class UserDetailsComponent implements OnInit {
             demandKcal:  data[0].payload.doc.get('demandKcal'),
             userToken: data[0].payload.doc.get('userToken'),
             friendNumber: data[0].payload.doc.get('friendNumber'),
-          }
+          };
         }
       });
     });
@@ -71,8 +71,8 @@ export class UserDetailsComponent implements OnInit {
         } else {
           this.db.collection("users").doc(e[0].payload.doc.id).set(this.userData, {merge: true});
         }
-      })
-    })
+      });
+    });
   }
 
   // getCurrentUser() {
