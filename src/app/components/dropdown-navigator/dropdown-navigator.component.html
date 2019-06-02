@@ -1,5 +1,5 @@
 <div class="nav-wrapper">
-    <div class="nav-wrap" (click)="isOpen = !isOpen">
+    <div class="nav-wrap" (click)="openAndCloseDropdown()">
         <div class="nav-wrap__trigger">
             <svg class="bars" viewBox="0 0 100 100" [ngClass]="isOpen ? 'active' : ''" >
                 <path class="line top"
@@ -17,13 +17,13 @@
     </div>
     <nav class="navigation" [style.display]="!isOpen ? 'none' : 'block'">
         <ul class="nav-items">
-            <li (click)="isOpen = !isOpen"><a (click)="navigateTo('main')">Strona główna</a></li>
-            <li (click)="isOpen = !isOpen"><a (click)="navigateTo('ustawienia-konta')">Dane użytkownika</a></li>
-            <li (click)="isOpen = !isOpen"><a (click)="navigateTo('stworz-diete')">Ułóż swoją diete</a></li>
-            <li (click)="isOpen = !isOpen"><a (click)="navigateTo('lista-produktow')">Sprawdż kaloryczność produktów</a></li>
-            <li (click)="isOpen = !isOpen"><a (click)="navigateTo('rekomendowane-diety')">Rekomendowane diety</a></li>
-            <li (click)="isOpen = !isOpen"><a (click)="navigateTo('posilki')">Zdrowe posiłki</a></li>
-            <li (click)="isOpen = !isOpen"><a (click)="navigateTo('kalkulator-bmi')">Sprawdż swoje BMI</a></li>
+            <li (click)="openAndCloseDropdown()"><a (click)="navigateTo('main')">Strona główna</a></li>
+            <li (click)="openAndCloseDropdown()"><a (click)="navigateTo('ustawienia-konta')">Dane użytkownika</a></li>
+            <li (click)="openAndCloseDropdown()"><a (click)="navigateTo('stworz-diete')">Ułóż swoją diete</a></li>
+            <li (click)="openAndCloseDropdown()"><a (click)="navigateTo('lista-produktow')">Sprawdż kaloryczność produktów</a></li>
+            <li (click)="openAndCloseDropdown()"><a (click)="navigateTo('rekomendowane-diety')">Rekomendowane diety</a></li>
+            <li (click)="openAndCloseDropdown()"><a (click)="navigateTo('posilki')">Zdrowe posiłki</a></li>
+            <li (click)="openAndCloseDropdown()"><a (click)="navigateTo('kalkulator-bmi')">Sprawdż swoje BMI</a></li>
             <li  (click)="logoutUser()">
                 Wyloguj się
             </li>

@@ -9,13 +9,25 @@ import { AuthorizeUserService } from '../../services/autorize-user.service';
 })
 export class DropdownNavigatorComponent implements OnInit {
   isOpen = false;
+  bodySelector;
   constructor(private _router: Router, public userService: AuthorizeUserService) { }
 
   ngOnInit() {
+    this.bodySelector = document.getElementsByTagName('body')[0];
+    console.log(this.bodySelector);
   }
 
   navigateTo(route: string) {
     this._router.navigate([route]);
+  }
+
+  openAndCloseDropdown() {
+    if (this.isOpen) {
+      this.bodySelector.style.overflow = 'auto';
+    } else {
+      this.bodySelector.style.overflow = 'hidden';
+    }
+    this.isOpen = !this.isOpen;
   }
 
   logoutUser() {
