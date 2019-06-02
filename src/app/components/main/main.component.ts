@@ -47,7 +47,7 @@ export class MainComponent implements OnInit {
     this.dailyAteKcal = 0;
     this.dailyRemainKcal = 0;
     for (let i = 0; i < this.dailyMeals.length; i++) {
-      this.dailyAteKcal += +this.dailyMeals[i]['kcal'];
+      this.dailyAteKcal += +this.dailyMeals[i]['calories'];
     }
     this.dailyRemainKcal  = +this.user.totalDayKcal - this.dailyAteKcal;
 

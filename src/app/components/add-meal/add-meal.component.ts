@@ -31,8 +31,8 @@ export class AddMealComponent implements OnInit {
     recipe: ''
   }
 
-  constructor(private _http: HttpClient, 
-              private uMeal: UserMealsService, 
+  constructor(private _http: HttpClient,
+              private uMeal: UserMealsService,
               private db: AngularFireDatabase,
               private afa: AngularFireAuth
               ) { }
@@ -55,6 +55,10 @@ export class AddMealComponent implements OnInit {
 
   saveMeal() {
     this.imageUploaded = false;
+    if (this.isRegister) {
+      this.addedMeal.emit(this.newMeal);
+      return ;
+    }
     if(this.newMeal.imageUrl === "") {
       firebase.storage().ref('/photos/noimage.png').getDownloadURL().then(data => {
         this.newMeal.imageUrl = data;

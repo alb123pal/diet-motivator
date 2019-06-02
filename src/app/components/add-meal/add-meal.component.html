@@ -29,10 +29,10 @@
     <span>składniki</span>
     <input [(ngModel)]="mealIngredients" type="text" placeholder="Podaj składniki po przecinku"/>
 </div>
-  <div>
+  <div *ngIf="!isRegister">
     <label for="file">File:</label>
     <input type="file" (change)="upload($event)" />
   </div>
-  <button [disabled]="!imageUploaded" (click)="saveMeal()">Dodaj posiłek</button>
+  <button [disabled]="!isRegister && !imageUploaded" (click)="saveMeal()">Dodaj posiłek</button>
   </div>
 </div>
