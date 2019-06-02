@@ -45,16 +45,14 @@
 	<h1>Rekomendowanie diety</h1>
 	<div id="diets-list-container">
 		<div id="diet-weight-container">
-			<label for="calories">Wybierz kaloryczność diety: </label>
-			<select (change)="chooseDietRange($event)" name="calories" id="calories">
-				<option value="Wszystko">Wszystko</option>
-				<option value="Uzytkownika">Uzytkownika</option>
-				<option *ngFor="let range of rangeDietKcal" value={{range}}>{{range}} kcal</option>
-				<!-- <option value="1000">1000 kcal</option>
-				<option value="1500">1500 kcal</option>
-				<option value="2000">2000 kcal</option>
-				<option value="3200">3200 kcal</option> -->
-			</select>
+			<label class="styled-select-label" for="calories">Filtruj diety wg. KCAL </label>
+			<div class="styled-select">
+				<select (change)="chooseDietRange($event)" name="calories" id="calories">
+					<option value="Wszystko">Wszystko</option>
+					<option value="Uzytkownika">Uzytkownika</option>
+					<option *ngFor="let range of rangeDietKcal" value={{range}}>{{range}} kcal</option>
+				</select>
+			</div>
 		</div>
 		
 		<div>
@@ -63,6 +61,7 @@
 			<div *ngFor="let diet of diets" class="col-6 mtb-25">
 				<button (click)="getDietDetails(diet.name)" class="diet-button">
 					<span class="diet-button__name">{{ diet.name }}</span>
+					<span class="diet-button__calories">{{ diet.calories }} kcal</span>
 				</button>
 			</div>
 		</div>
